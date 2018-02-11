@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "emulator": "emulator -avd Nexus5V6L23_x86_64 -scale 1.0",
+    "install": "react-native run-android",
+    "start": "react-native start --reset-cache",
+    "android": "npm run install && npm run start",
+    "clean": "watchman watch-del-all && npm cache clean && cd android && ./gradlew clean && cd ..",
+    "test": "jest",
+    "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
   },
   "dependencies": {
     "@firebase/firestore": "^0.3.2",
