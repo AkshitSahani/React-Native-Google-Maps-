@@ -1,22 +1,40 @@
 import React from 'react';
 
 const initialState = {
-  unionized: true,
-  insurance: true,
-  rateMax: '',
-  rateMin: '',
-  location: '',
-  capability: '',
-  radius: '',
-  rating: '',
-  startDate: '',
-  endDate: ''
+  experience: '',
+  rate:'',
+  rating: '5',
+  radius: 10,
+  capability:'',
+  insurance:true,
+  unionized:true,
+  location:'',
+  availabilityMin:'',
+  availabilityMax:''
 };
 
 const FiltersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'update':
-      return {...state}
+    case 'capabilityChange':
+      return {...state, capability: action.payload};
+    case 'experienceChange':
+      return {...state, experience: action.payload};
+    case 'rateChange':
+      return {...state, rate: action.payload};
+    case 'ratingChange':
+      return {...state, rating: action.payload};
+    case 'insuranceChange':
+      return {...state, insurance: action.payload};
+    case 'unionizedChange':
+      return {...state, unionized: action.payload};
+    case 'radiusChange':
+      return {...state, radius: action.payload};
+    case 'locationChange':
+      return {...state, location: action.payload};
+    case 'availabilityMinChange':
+      return {...state, availabilityMin: action.payload};
+    case 'availabilityMaxChange':
+      return {...state, availabilityMax: action.payload};
     default:
       return state
   }

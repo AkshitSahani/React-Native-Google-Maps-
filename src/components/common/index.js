@@ -4,3 +4,6 @@ export * from './CardItem';
 export * from './Button';
 export * from './Input';
 export * from './Spinner';
+export * from './SwitchInput';
+export * from './Date';
+export * from './SlideBar';
