@@ -68,6 +68,7 @@ const Date = props => {
 
 const style = {
   alignSelf: 'center',
-  flexDirection: 'row'
+  flexDirection: 'row',
+  alignItems: 'center'
 }
 export {Date};

@@ -8,7 +8,7 @@ const initialState = {
   capability:'',
   insurance:true,
   unionized:true,
-  location:'',
+  coordinates:{},
   availabilityMin:'',
   availabilityMax:''
 };
@@ -30,7 +30,7 @@ const FiltersReducer = (state = initialState, action) => {
     case 'radiusChange':
       return {...state, radius: action.payload};
     case 'locationChange':
-      return {...state, location: action.payload};
+      return {...state, coordinates: action.payload};
     case 'availabilityMinChange':
       return {...state, availabilityMin: action.payload};
     case 'availabilityMaxChange':

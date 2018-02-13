@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import RouterComponent from './Router';
 import AuthReducer from './src/reducers/AuthReducer';
 import FiltersReducer from './src/reducers/FiltersReducer';
+import SearchReducer from './src/reducers/SearchReducer';
 
 export default class Workorbe extends Component {
 
@@ -25,7 +26,8 @@ export default class Workorbe extends Component {
   render() {
     const rootReducer = combineReducers({
       auth: AuthReducer,
-      filters: FiltersReducer
+      filters: FiltersReducer,
+      search: SearchReducer
     });
 
     const store = createStore(rootReducer, {}, applyMiddleware(thunk));

@@ -1,44 +1,47 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
+import {View, FlatList,TextInput, Text, Platform} from 'react-native';
 import {Card, CardItem, Button, Header} from './common';
+import {search} from '../actionCreators/search';
 import Map from './Map';
+import ListItem from './ListItem';
 
 class SearchResults extends Component {
+
   render(){
     return(
-      <Card>
-        <Map height="100%" width="100%" />
-        <CardItem style={{position: 'absolute', bottom:'30%', left: '30%', zIndex: 1}}>
-          <Header title="Search Results"/>
-          <Button content="book" pressed={() => {Actions.LoginForm();}}/>
-          <Button content="Contact" pressed={() => {Actions.LoginForm();}}/>
-        </CardItem>
-      </Card>
-    )
-  };
-};
-
-const mapStateToProps = (state) => {
-  const {location, unionized, insurance, endDate, startDate, rating, rateMax, rateMin, capability, radius} = state.filters;
-  return{
-    location: location,
-    unionized: unionized,
-    insurance: insurance,
-    rateMax: rateMax,
-    rateMin: rateMin,
-    startDate: startDate,
-    endDate: endDate,
-    rating: rating,
-    capability: capability,
-    radius: radius
-  }
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return{
-
+    <Card>
+      <Header title="Seekers"/>
+      <Map height="100%" width="100%"/>
+      <View style={{position: 'absolute', backgroundColor: 'white', top:0, left: 0, right: 0, zIndex: 10}}>
+        <FlatList
+          // style={{zIndex: 100}}
+          data={this.props.users}
+          keyExtractor={(item) => (item.name + item.capability)}
+          renderItem={({item}) => {
+              console.log('user:!!!!!',item);
+              return (
+                <ListItem
+                  user={item}
+                />
+              );
+            }
+          }
+        />
+      </View>
+    </Card>
+    );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
+const mapStateToProps = state => {
+  // const {location, unionized, insurance, endDate, startDate, rating, rateMax, rateMin, capability, radius} = state.filters;
+  console.log('users in search results: ',state.search);
+  return ({
+    filters:state.filters,
+    users:state.search.users
+  });
+};
+
+export default connect(mapStateToProps)(SearchResults);

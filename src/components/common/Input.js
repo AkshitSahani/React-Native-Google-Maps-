@@ -14,8 +14,8 @@ const Input = (props) => {
 const style = {
   alignSelf: 'center',
   flexDirection: 'row',
-  justifyContent: 'center'
-
+  justifyContent: 'center',
+  alignItems: 'center'
 }
 
 export {Input};

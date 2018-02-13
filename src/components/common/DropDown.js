@@ -5,7 +5,7 @@ const DropDown = (props) => {
 
     return(
       <View style={style}>
-        <Text>{props.label}</Text>
+        <Text>{' '+props.label}</Text>
         <Picker
           selectedValue={prop.value}
           onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
@@ -20,7 +20,8 @@ const DropDown = (props) => {
 const style = {
   alignSelf: 'center',
   flexDirection: 'row',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  alignItems: 'center'
 }
 
 export {DropDown};

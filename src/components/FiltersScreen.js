@@ -1,30 +1,27 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { View, Text, Switch, ScrollView, Picker,Platform } from 'react-native';
+import { View, Text, Switch, Picker,Platform } from 'react-native';
 import {Header, Input, Card, Button, SwitchInput, Date, SlideBar } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
+import {search} from '../actionCreators/search';
 
 class FiltersScreen extends Component {
 
   onCapabilityChange(capability) {
     this.props.capabilityChange(capability);
-    // console.log('this.props.capability: ',this.props.capability);
   }
 
   onExperienceChange(experience) {
     this.props.experienceChange(experience);
-    // console.log('this.props.experience: ',this.props.experience);
   }
 
   onRateChange(rate) {
     this.props.rateChange(rate);
-    // console.log('this.props.rate: ',this.props.rate);
   }
 
   onRatingChange(rating) {
     this.props.ratingChange(rating);
-    // console.log('this.props.rate: ',this.props.rate);
   }
 
   onInsuranceChange(insurance) {
@@ -39,10 +36,6 @@ class FiltersScreen extends Component {
     this.props.radiusChange(radius);
   }
 
-  onLocationChange(location) {
-    this.props.locationChange(location);
-  }
-
   onAvailabilityMinChange(availabilityMin) {
     this.props.availabilityMinChange(availabilityMin);
   }
@@ -52,11 +45,10 @@ class FiltersScreen extends Component {
   }
 
   onButtonPress() {
-    this.props.refineSearch({...this.props.filters});
+    this.props.search({...this.props.filters});
     Actions.results();
+    console.log('searchActions: ',searchActions);
   }
-    // const inputFields = {'capability','experience','rate','rating','availabilityMin','availabilityMax','insurance','unionized'];
-
 
   render(){
 
@@ -67,7 +59,6 @@ class FiltersScreen extends Component {
             insurance,
             unionized,
             rating,
-            location,
             availabilityMin,
             availabilityMax
             } = this.props.filters;
@@ -75,7 +66,7 @@ class FiltersScreen extends Component {
     return(
       <Card>
         <Header title="Filters Screen" />
-        {/* <ScrollView> */}
+
         <Input
           label="Capability"
           changed={this.onCapabilityChange.bind(this)}
@@ -151,7 +142,7 @@ class FiltersScreen extends Component {
           changed={this.onUnionizedChange.bind(this)}
           value={unionized}
         />
-        {/* </ScrollView> */}
+
         <Button content="Search" pressed={this.onButtonPress.bind(this)} />
       </Card>
     );
@@ -160,6 +151,4 @@ class FiltersScreen extends Component {
 
 const mapStateToProps = ({filters}) => ({filters});
 
-
-// export default connect(mapStateToProps, {inputChange,refineSearch})(FiltersScreen);
-export default connect(mapStateToProps, searchActions)(FiltersScreen);
+export default connect(mapStateToProps, {...searchActions, search})(FiltersScreen);
