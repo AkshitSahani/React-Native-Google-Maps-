@@ -28,7 +28,10 @@ export const signUp = (email, password) => {
   return (dispatch) => {
     dispatch(signUpStart());
     fireBase.auth().createUserWithEmailAndPassword(email, password)
-      .then((user)=>{dispatch(signUpSuccess(user)); Actions.results();})
-      .catch((error)=>{return dispatch(signUpFailure(error))})
+      .then((user)=>{
+        firebase.firestore().collection('users').doc(user.uid).set(user)
+        dispatch(signUpSuccess(user));
+        Actions.results();
+      }).catch((error)=>{return dispatch(signUpFailure(error))})
   };
 };
