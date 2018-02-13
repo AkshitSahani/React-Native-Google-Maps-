@@ -34,7 +34,7 @@ class SignUpForm extends Component {
 
         <CardItem>
           {this.props.loading ? <Spinner size="large" /> : null}
-          <Button content="Sign Up" pressed={this.props.signUpUser.bind(this, this.props.email, this.props.password)}/>
+          <Button content="Sign Up" pressed={this.props.signUpUser.bind(this, this.props.email, this.props.password, this.props.phone, this.props.company, this.props.name)}/>
         </CardItem>
         {this.props.signedUp ? <Text style={{color: 'green'}}>Congrats, your account was successfully created!</Text> : null}
         {this.props.error ? <Text style={{color: 'red'}}>{this.props.error.message}</Text> : null}
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
   return{
     emailChanged: (text) => dispatch({type: 'emailChanged', value: text}),
     passwordChanged: (text) => dispatch({type: 'passwordChanged', value: text}),
-    signUpUser: (email, password) => dispatch(signUp(email, password)),
+    signUpUser: (email, password, phone, company, name) => dispatch(signUp(email, password, phone, company, name)),
     nameChanged: (text) => dispatch({type: 'nameChanged', value: text}),
     companyChanged: (text) => dispatch({type: 'companyChanged', value: text}),
     phoneChanged: (text) => dispatch({type: 'phoneChanged', value: text}),

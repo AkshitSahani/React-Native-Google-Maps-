@@ -24,12 +24,12 @@ export const login = (email, password) => {
   };
 };
 
-export const signUp = (email, password) => {
-  return (dispatch) => {
+export const signUp = (email, password, phone, company, name) => {
+  return dispatch => {
     dispatch(signUpStart());
     fireBase.auth().createUserWithEmailAndPassword(email, password)
-      .then((user)=>{
-        firebase.firestore().collection('users').doc(user.uid).set(user)
+      .then(user=>{
+        firebase.firestore().collection('users').doc(user.uid).set({email,phone,scompany, name});
         dispatch(signUpSuccess(user));
         Actions.results();
       }).catch((error)=>{return dispatch(signUpFailure(error))})
