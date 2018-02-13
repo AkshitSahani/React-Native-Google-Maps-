@@ -24,9 +24,9 @@ const RouterComponent = () => {
           <Scene key="LoginForm" component={LoginForm} />
         </Scene>
 
-        <Scene key="auth">
-          <Scene key="LoginForm" component={LoginForm} />
-          <Scene key="SignUpForm" component={SignUpForm} />
+        <Scene key="auth" >
+          <Scene key="LoginForm" component={LoginForm}/>
+          <Scene key="SignUpForm" component={SignUpForm}/>
         </Scene>
       </Scene>
     </Router>

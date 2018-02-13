@@ -11,7 +11,8 @@ const initialState = {
   name: '',
   company: '',
   phone: '',
-  passwordConfirmation: ''
+  passwordConfirmation: '',
+  passwordNotConfirmed: null
 };
 
 const AuthReducer = (state = initialState, action) => {
@@ -35,11 +36,13 @@ const AuthReducer = (state = initialState, action) => {
     case 'loginStart':
       return {...state, loading: true, error: ''}
     case 'signUpSuccess':
-      return {...state, ...initialState, user: action.user, signedUp: true}
+      return {...initialState, user: action.user, signedUp: true}
     case 'signUpFailure':
       return {...state, error: action.error, password: '', loading: false, email: ''}
     case 'signUpStart':
-      return {...state, loading: true, error: ''}
+      return {...state, loading: true, error: '', passwordNotConfirmed: null}
+    case 'passwordNotConfirmed':
+      return {...state, passwordNotConfirmed: true, loading: false, password: '', passwordConfirmation: ''}
     default:
       return state;
   }
