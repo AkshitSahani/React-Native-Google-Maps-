@@ -1,6 +1,6 @@
 import fireBase from 'firebase';
-import firebase from '@firebase/app';
-import '@firebase/firestore';
+// import firebase from '@firebase/app';
+// import '@firebase/firestore';
 import {Actions} from 'react-native-router-flux';
 
 export const loginSuccess = (user) => {return {type: 'loginSuccess', user: user}};
