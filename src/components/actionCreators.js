@@ -1,6 +1,6 @@
 import fireBase from 'firebase';
-// import firebase from '@firebase/app';
-// import '@firebase/firestore';
+import firebase from '@firebase/app';
+import '@firebase/firestore';
 import {Actions} from 'react-native-router-flux';
 
 export const loginSuccess = (user) => {return {type: 'loginSuccess', user: user}};
@@ -29,9 +29,10 @@ export const signUp = (email, password, phone, company, name) => {
     dispatch(signUpStart());
     fireBase.auth().createUserWithEmailAndPassword(email, password)
       .then(user=>{
-        firebase.firestore().collection('users').doc(user.uid).set({email,phone,scompany, name});
+        firebase.firestore().collection('users').doc(user.uid).set({email, phone, company, name});
         dispatch(signUpSuccess(user));
         Actions.results();
-      }).catch((error)=>{return dispatch(signUpFailure(error))})
+      })
+      .catch((error)=>{return dispatch(signUpFailure(error))})
   };
 };
