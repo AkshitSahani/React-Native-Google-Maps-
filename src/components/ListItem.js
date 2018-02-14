@@ -7,7 +7,8 @@ import {Card, CardItem, Button, Header} from './common';
 class ListItem extends Component {
 
   render() {
-    const { capability,rate,rating, name, experience } = this.props.user;
+    const { capability,rate,rating, name, experience, radius } = this.props.user;
+    const roundedRadius = radius.toFixed(2);
     return (
       <Card style={style.general}>
 
@@ -22,7 +23,7 @@ class ListItem extends Component {
 
         <CardItem style={style.cardItem}>
           <Text>$ {rate}</Text>
-          <Text>{} Km away</Text>
+          <Text>{roundedRadius} Km away</Text>
           <Text>Exp {experience} years</Text>
           <Button style={style} content="Contact" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>

@@ -18,13 +18,18 @@ class SearchResults extends Component {
   };
 
   render(){
+    let top = 59;
+    if(this.props.users.length <= 1){
+      top = 72;
+    }
+    let height = (91 - top);
     return(
 
    <Card>
      <Header title="Seekers"/>
      <Map height="100%" width="100%"/>
      <View style={
-       this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'100%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:'50%', left: 0, right: 0, zIndex: 10, height: '50%'}
+       this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'91%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
      }>
        <TouchableOpacity onPress={()=>{this.expandResults()}}><Text style={{alignSelf: 'center', fontSize: 30}}>{this.state.expanded ? 'Down' : '^^'}</Text></TouchableOpacity>
        <FlatList
