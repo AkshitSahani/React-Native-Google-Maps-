@@ -26,7 +26,8 @@ const Button = (props) => {
         button: {
           alignSelf: "center",
           backgroundColor: '#F9BA32',
-          borderRadius: 5
+          borderRadius: 5,
+          padding: 6
 
         },
         text: {
