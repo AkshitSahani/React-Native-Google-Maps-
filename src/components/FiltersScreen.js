@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Switch, Picker,Platform } from 'react-native';
-import {Header, Input, Card, Button, SwitchInput, Date, SlideBar } from './common';
+import {Header, Input, Card, Button, SwitchInput, Date, SlideBar, Radius } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
 import {search} from '../actionCreators/search';
@@ -90,7 +90,7 @@ class FiltersScreen extends Component {
         />
 
         <Date
-          label="End Date"
+          label={"\xa0"+"End Date"}
           changed={this.onAvailabilityMaxChange.bind(this)}
           value={availabilityMax}
         />
@@ -119,18 +119,22 @@ class FiltersScreen extends Component {
             <Picker.Item label="3" value="3" />
             <Picker.Item label="2" value="2" />
             <Picker.Item label="1" value="1" />
-
           </Picker>
         </View>
 
-        <SlideBar
+        {/* <SlideBar
           label={'Radius'  + ' ('+ Math.floor(radius) + ' km) '}
           max={120}
           min={1}
           changed={this.onRadiusChange.bind(this)}
           value={radius}
           step={2}
+        /> */}
+
+        <Radius
+          pressed={this.onRadiusChange.bind(this)}
         />
+
         <SwitchInput
           label="Insurance"
           changed={this.onInsuranceChange.bind(this)}
