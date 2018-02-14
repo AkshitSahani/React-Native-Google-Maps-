@@ -17,14 +17,14 @@ class ListItem extends Component {
           <Text> {name}</Text>
           <Text>{capability}</Text>
           <Text>{rating} stars</Text>
-          <Button style={style.button} content="Book" pressed={() => {Actions.LoginForm()}}/>
+          <Button style={style} content="Book" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>
 
         <CardItem style={style.cardItem}>
           <Text>$ {rate}</Text>
           <Text>{} Km away</Text>
           <Text>Exp {experience} years</Text>
-          <Button style={style.button} content="Contact" pressed={() => {Actions.LoginForm()}}/>
+          <Button style={style} content="Contact" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>
 
       </Card>
@@ -41,11 +41,16 @@ const style = {
     display: 'flex',
   },
   button: {
-    fontSize: 20,
+    // height: 10
     borderWidth: 2,
     padding: 10,
-    color: 'white',
-    borderRadius: 5,
+    alignSelf: "center",
+    backgroundColor: '#F9BA32',
+    borderRadius: 5
+  },
+  text: {
+    fontSize: 16,
+    color: 'white'
   },
   name: {
     fontSize: 20,

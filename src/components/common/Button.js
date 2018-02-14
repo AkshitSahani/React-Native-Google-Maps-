@@ -25,11 +25,13 @@ const Button = (props) => {
       return {
         button: {
           alignSelf: "center",
-          backgroundColor: '#F9BA32', 
+          backgroundColor: '#F9BA32',
           borderRadius: 5
+
         },
         text: {
-          fontSize:20
+          fontSize:20,
+          color: 'white'
         }
       };
     }
