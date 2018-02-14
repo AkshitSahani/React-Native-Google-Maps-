@@ -40,6 +40,11 @@ export const locationChange = input => {
   return {type: 'locationChange', payload: input};
 }
 
+export const radiusChange = input => {
+  console.log('GPS',input);
+  return {type: 'radiusChange', payload: input};
+}
+
 export const availabilityMinChange = input => {
   return {type: 'availabilityMinChange', payload: input};
 }
