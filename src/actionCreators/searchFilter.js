@@ -35,13 +35,14 @@ export const unionizedChange = input => {
   return {type: 'unionizedChange', payload: input};
 }
 
-export const radiusChange = input => {
-  return {type: 'radiusChange', payload: input};
-}
-
 export const locationChange = input => {
   console.log('GPS',input);
   return {type: 'locationChange', payload: input};
+}
+
+export const radiusChange = input => {
+  console.log('GPS',input);
+  return {type: 'radiusChange', payload: input};
 }
 
 export const availabilityMinChange = input => {
