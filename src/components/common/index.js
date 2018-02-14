@@ -7,3 +7,4 @@ export * from './Spinner';
 export * from './SwitchInput';
 export * from './Date';
 export * from './SlideBar';
+export * from './Radius';

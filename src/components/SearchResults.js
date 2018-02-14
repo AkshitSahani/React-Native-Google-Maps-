@@ -14,7 +14,7 @@ class SearchResults extends Component {
     <Card>
       <Header title="Seekers"/>
       <Map height="100%" width="100%"/>
-      <View style={{position: 'absolute', backgroundColor: 'white', top:0, left: 0, right: 0, zIndex: 10}}>
+      <View style={{position: 'absolute', backgroundColor: 'white', bottom:0, left: 0, right: 0, zIndex: 10}}>
         <FlatList
           // style={{zIndex: 100}}
           data={this.props.users}
