@@ -5,43 +5,29 @@ import {View,TextInput, Text, Platform} from 'react-native';
 import {Card, CardItem, Button, Header} from './common';
 
 class ListItem extends Component {
-  state = {
-    clicked: false
-  }
-
-  Onclick() {
-    console.log(this.state);
-    this.setState({ clicked: !this.state.clicked});
-  }
-
-  showButton(clicked) {
-    if (clicked) {
-      return(
-        <View style={style.button}>
-          <Button style={{marginLeft: '5%'}} content="Book" pressed={() => {Actions.LoginForm()}}/>
-          <Button style={{marginLeft: '5%'}}content="Contact" pressed={() => {Actions.LoginForm()}}/>
-        </View>
-      );
-    }
-
-  }
 
   render() {
-    const { capability,rate,rating,insurance,unionized,availabilityMin,availabilityMax } = this.props.user;
-    console.log('render!!!!!!');
+    const { capability,rate,rating, name, experience } = this.props.user;
     return (
-      <CardItem style={style.general}>
-        <Text
-          style={style.name}
-          onPress={this.Onclick.bind(this)}
-        >
-          {this.props.user.name}
-        </Text>
+      <Card style={style.general}>
 
-        <Text onPress={this.Onclick.bind(this)}> {' capability: ' + capability + '  rate: $'+ rate + '  rating: ' + rating + (insurance ? '  insurance: Yes' : '  insurance: No')}</Text>
-        <Text onPress={this.Onclick.bind(this)}>{(unionized ? 'unionized: Yes' : 'unionized: No') + '  availabile from '+ availabilityMin + ' to '+ availabilityMax}</Text>
-        {this.showButton(this.state.clicked)}
-      </CardItem>
+        <CardItem style={style.cardItem}><Text>Picture</Text></CardItem>
+
+        <CardItem style={style.cardItem}>
+          <Text> {name}</Text>
+          <Text>{capability}</Text>
+          <Text>{rating} stars</Text>
+          <Button style={style.button} content="Book" pressed={() => {Actions.LoginForm()}}/>
+        </CardItem>
+
+        <CardItem style={style.cardItem}>
+          <Text>$ {rate}</Text>
+          <Text>{} Km away</Text>
+          <Text>Exp {experience} years</Text>
+          <Button style={style.button} content="Contact" pressed={() => {Actions.LoginForm()}}/>
+        </CardItem>
+
+      </Card>
     );
   }
 }
@@ -49,22 +35,29 @@ class ListItem extends Component {
 const style = {
 
   general: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    alignItems: 'center'
-
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection: 'row',
+    display: 'flex',
   },
   button: {
-  alignSelf: 'center',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignContent: 'space-between'
-
+    fontSize: 20,
+    borderWidth: 2,
+    padding: 10,
+    color: 'white',
+    borderRadius: 5,
   },
   name: {
     fontSize: 20,
     fontWeight: 'bold'
+  },
+  cardItem: {
+    flexDirection: 'column',
+    alignItems:'center',
+    justifyContent: 'space-around',
+    marginBottom: 10
   }
+
 }
 
 export default ListItem;

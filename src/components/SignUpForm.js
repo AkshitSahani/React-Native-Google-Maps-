@@ -38,13 +38,14 @@ class SignUpForm extends Component {
         </CardItem>
         {this.props.signedUp ? <Text style={{color: 'green'}}>Congrats, your account was successfully created!</Text> : null}
         {this.props.error ? <Text style={{color: 'red'}}>{this.props.error.message}</Text> : null}
+        {this.props.passwordNotConfirmed ? <Text style={{color: 'red'}}>Password and Password Confirmation don't match! Please try again</Text> : null}
       </Card>
     )
   };
 };
 
 const mapStateToProps = (state) => {
-  const {email, password, loading, error, signedUp, name, phone, company, passwordConfirmation} = state.auth;
+  const {email, password, loading, error, signedUp, name, phone, company, passwordConfirmation, passwordNotConfirmed} = state.auth;
   return{
     email: email,
     password: password,
@@ -54,7 +55,8 @@ const mapStateToProps = (state) => {
     name: name,
     company: company,
     phone: phone,
-    passwordConfirmation: passwordConfirmation
+    passwordConfirmation: passwordConfirmation,
+    passwordNotConfirmed: passwordNotConfirmed
   }
 };
 

@@ -15,6 +15,8 @@ export const signUpSuccess = (user) => {return {type: 'signUpSuccess', user: use
 
 export const signUpFailure = (error) => {return {type: 'signUpFailure', error: error}};
 
+export const passwordNotConfirmed = () => {return {type: 'passwordNotConfirmed'}};
+
 export const login = (email, password) => {
   return (dispatch) => {
     dispatch(loginStart());
@@ -25,14 +27,19 @@ export const login = (email, password) => {
 };
 
 export const signUp = (email, password, phone, company, name) => {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(signUpStart());
-    fireBase.auth().createUserWithEmailAndPassword(email, password)
-      .then(user=>{
-        firebase.firestore().collection('users').doc(user.uid).set({email, phone, company, name});
-        dispatch(signUpSuccess(user));
-        Actions.results();
-      })
-      .catch((error)=>{return dispatch(signUpFailure(error))})
+    if(getState().auth.password === getState().auth.passwordConfirmation){
+      fireBase.auth().createUserWithEmailAndPassword(email, password)
+        .then(user=>{
+          firebase.firestore().collection('users').doc(user.uid).set({email, phone, company, name});
+          dispatch(signUpSuccess(user));
+          Actions.results();
+        })
+        .catch((error)=>{return dispatch(signUpFailure(error))})
+    }
+    else{
+      dispatch(passwordNotConfirmed());
+    }
   };
 };

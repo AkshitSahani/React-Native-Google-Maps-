@@ -24,7 +24,9 @@ const Button = (props) => {
     } else {
       return {
         button: {
-          alignSelf: "center"
+          alignSelf: "center",
+          backgroundColor: '#F9BA32', 
+          borderRadius: 5
         },
         text: {
           fontSize:20
@@ -34,12 +36,17 @@ const Button = (props) => {
   }
 
   return(
+
+//     <TouchableOpacity onPress={props.pressed} style={{alignSelf: "center", backgroundColor: '#F9BA32', borderRadius: 5}}>
+//       <Text style={props.style}>
+
     <TouchableOpacity
       onPress={props.pressed}
       // style={props.style ? {...props.style.button, ...props.style.buttonClicked} : {alignSelf: "center"}}
       style={style().button}
     >
       <Text style={style().text}>
+
         {props.content}
       </Text>
     </TouchableOpacity>
