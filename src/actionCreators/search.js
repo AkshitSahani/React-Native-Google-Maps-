@@ -37,7 +37,7 @@ export const search = inputData => {
       console.log('inputData: ',inputData);
 
       for (let prop in inputData) {
-        if (prop === "unionized" || inputData[prop]  ){
+        if (inputData[prop]){
           switch (prop) {
 
             case "rating":
@@ -150,7 +150,7 @@ export const search = inputData => {
               } else {
                 user['radius'] = radiusInfo[1];
               }
-            } else if(prop !== 'radius' && !eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`)){
+            } else if(prop !== 'radius' && user[prop] && !eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`)){
               return false;
             }
           }
