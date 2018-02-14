@@ -3,8 +3,8 @@ import {View, Text, TouchableOpacity, Platform} from 'react-native';
 
 const Button = (props) => {
   return(
-    <TouchableOpacity onPress={props.pressed} style={{alignSelf: "center"}}>
-      <Text style={{fontSize: (Platform.OS == 'android' ? 20 : 20)}}>
+    <TouchableOpacity onPress={props.pressed} style={{alignSelf: "center", backgroundColor: '#F9BA32', borderRadius: 5}}>
+      <Text style={props.style}>
         {props.content}
       </Text>
     </TouchableOpacity>

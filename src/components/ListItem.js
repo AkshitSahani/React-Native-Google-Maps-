@@ -17,14 +17,14 @@ class ListItem extends Component {
           <Text> {name}</Text>
           <Text>{capability}</Text>
           <Text>{rating} stars</Text>
-          <Button style={{marginLeft: '5%'}} content="Book" pressed={() => {Actions.LoginForm()}}/>
+          <Button style={style.button} content="Book" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>
 
         <CardItem style={style.cardItem}>
           <Text>$ {rate}</Text>
           <Text>{} Km away</Text>
           <Text>Exp {experience} years</Text>
-          <Button style={{marginLeft: '5%'}} content="Contact" pressed={() => {Actions.LoginForm()}}/>
+          <Button style={style.button} content="Contact" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>
 
       </Card>
@@ -35,18 +35,17 @@ class ListItem extends Component {
 const style = {
 
   general: {
-    alignSelf: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     flexDirection: 'row',
-    alignContent: 'space-around',
-    display: 'flex'
+    display: 'flex',
   },
   button: {
-  alignSelf: 'center',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignContent: 'space-between'
+    fontSize: 20,
+    borderWidth: 2,
+    padding: 10,
+    color: 'white',
+    borderRadius: 5,
   },
   name: {
     fontSize: 20,
@@ -55,7 +54,8 @@ const style = {
   cardItem: {
     flexDirection: 'column',
     alignItems:'center',
-    justifyContent: 'center'
+    justifyContent: 'space-around',
+    marginBottom: 10
   }
 
 }
