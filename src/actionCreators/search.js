@@ -24,7 +24,8 @@ const isWithinMyRadius = (myLocation, userLocation, radius) => {
   const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(myLocation.latitude) * Math.cos(userLocation.latitude);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   console.log(`${earthRadiusKm * c} <= ${radius} ? `,earthRadiusKm * c <= radius)
-  return (earthRadiusKm * c <= radius);
+  const distance = earthRadiusKm * c;
+  return [distance <= radius, distance];
 }
 
 export const search = inputData => {
@@ -143,8 +144,11 @@ export const search = inputData => {
             }
 
             if (prop === 'coordinates') {
-              if (!isWithinMyRadius(filter[prop].value,user[prop],filter.radius.value)) {
+              let radiusInfo = isWithinMyRadius(filter[prop].value,user[prop],filter.radius.value);
+              if (!radiusInfo[0]) {
                 return false;
+              } else {
+                user['radius'] = radiusInfo[1];
               }
             } else if(prop !== 'radius' && !eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`)){
               return false;
