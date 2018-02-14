@@ -133,6 +133,7 @@ class FiltersScreen extends Component {
 
         <Radius
           pressed={this.onRadiusChange.bind(this)}
+          radius={radius}
         />
 
         <SwitchInput
