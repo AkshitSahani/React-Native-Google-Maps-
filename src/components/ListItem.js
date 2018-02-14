@@ -42,7 +42,7 @@ const style = {
   },
   button: {
     // height: 10
-    borderWidth: 2,
+    borderWidth: 1,
     padding: 10,
     alignSelf: "center",
     backgroundColor: '#F9BA32',
