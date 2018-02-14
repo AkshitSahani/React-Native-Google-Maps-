@@ -24,7 +24,7 @@ class SearchResults extends Component {
      <Header title="Seekers"/>
      <Map height="100%" width="100%"/>
      <View style={
-       this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'100%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:'50%', left: 0, right: 0, zIndex: 10}
+       this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'100%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:'50%', left: 0, right: 0, zIndex: 10, height: '50%'}
      }>
        <TouchableOpacity onPress={()=>{this.expandResults()}}><Text style={{alignSelf: 'center', fontSize: 30}}>{this.state.expanded ? 'Down' : '^^'}</Text></TouchableOpacity>
        <FlatList
@@ -70,7 +70,6 @@ class SearchResults extends Component {
 
 const mapStateToProps = state => {
   // const {location, unionized, insurance, endDate, startDate, rating, rateMax, rateMin, capability, radius} = state.filters;
-  console.log('users in search results: ',state.search);
   return ({
     filters:state.filters,
     users:state.search.users
