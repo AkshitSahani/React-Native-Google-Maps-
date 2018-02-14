@@ -4,30 +4,42 @@ import {View, Text, TouchableOpacity, Platform} from 'react-native';
 
 
 const Button = (props) => {
-  console.log('props.radius === props.clicked: ',props.radius === props.clicked);
+  // console.log('props.radius === props.clicked: ',props.radius === props.clicked);
   // console.log('button color', (props.radius === props.clicked ? props.style.buttonClicked : '') );
   // const clickedStyle = props.style ? (props.radius === props.clicked ? props.style.buttonClicked : '') : '';
   // const style = clickedStyle ? {...props.style.button, ...clickedStyle } : {...props.style.button}
   const style = () => {
     if (props.style) {
-      if (props.radius === props.clicked) {
-        return {...props.style.button, ...props.style.buttonClicked }
+      if (props.id && props.clicked && props.id === props.clicked) {
+        return {
+          button: {...props.style.button, ...props.style.buttonClicked.button },
+          text: {...props.style.text, ...props.style.buttonClicked.text }
+        };
       } else {
-        return props.style.button;
+        return {
+          button: {...props.style.button},
+          text: {...props.style.text}
+        };
       }
     } else {
-      return {alignSelf: "center"};
+      return {
+        button: {
+          alignSelf: "center"
+        },
+        text: {
+          fontSize:20
+        }
+      };
     }
-
   }
 
   return(
     <TouchableOpacity
       onPress={props.pressed}
       // style={props.style ? {...props.style.button, ...props.style.buttonClicked} : {alignSelf: "center"}}
-      style={style()}
+      style={style().button}
     >
-      <Text style={props.style ? props.style.text : {fontSize:20}}>
+      <Text style={style().text}>
         {props.content}
       </Text>
     </TouchableOpacity>
