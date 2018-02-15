@@ -31,15 +31,16 @@ const Rate = props => {
   return(
 
     <View style={style.overall}>
-
-      <Text style={style.text}>{props.rateMin + ' - ' + props.rateMax}</Text>
-
-      <View style={style.row}>
-        <Text style={style.text}>Min</Text>
-        <Text style={style.text}>Max</Text>
+      <View style={{height: '15%'}}>
+        <Text style={style.text}>Hourly Rate</Text>
+        <Text style={style.text}>{'$' + props.rateMin + ' - $' + props.rateMax}</Text>
+      </View>
+      <View style={{...style.row,height: '15%'}}>
+        <Text style={{...style.text, marginHorizontal:'18%'}}>Min</Text>
+        <Text style={{...style.text, marginHorizontal:'20%'}}>Max</Text>
       </View>
 
-      <View style={style.row}>
+      <View style={{...style.row,height: '69%'}}>
         <ScrollView
         >
           {renderRateOptions('rateMin',props.selectMin)}
@@ -58,7 +59,7 @@ const Rate = props => {
 const style = {
   overall: {
     alignSelf: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
     // flexDirection: 'row',
     height:'75%',
@@ -78,7 +79,7 @@ const style = {
     flexDirection: 'row'
   },
   scrollview:{
-    height:'75'
+    height:'75%'
   },
   text: {
     fontSize: 25,

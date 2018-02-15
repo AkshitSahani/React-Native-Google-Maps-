@@ -9,3 +9,4 @@ export * from './Date';
 export * from './SlideBar';
 export * from './Radius';
 export * from './Rate';
+export * from './DatePage';

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Switch, Picker,Platform } from 'react-native';
-import {Header, Input, Card, Button, SwitchInput, Date, SlideBar, Radius, Rate } from './common';
+import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
 import {search} from '../actionCreators/search';
@@ -60,6 +60,9 @@ class FiltersScreen extends Component {
   onRateButtonPress() {
     // this.props.search({...this.props.filters});
     this.setState({rateClicked:!this.state.rateClicked});
+    if (this.state.dateClicked) {
+      this.setState({dateClicked:!this.state.dateClicked});
+    }
   }
 
   showRateOptions(rateMin,rateMax) {
@@ -77,8 +80,23 @@ class FiltersScreen extends Component {
   }
 
   onDateButtonPress() {
-    // this.props.search({...this.props.filters});
-    console.log('Date clicked');
+    this.setState({dateClicked:!this.state.dateClicked});
+    if (this.state.rateClicked) {
+      this.setState({rateClicked:!this.state.rateClicked});
+    }
+  }
+
+  showDateOptions(availabilityMin,availabilityMax) {
+    if (this.state.dateClicked) {
+      return (
+        <DatePage
+          availabilityMin={availabilityMin}
+          availabilityMax={availabilityMax}
+          selectMin={this.onAvailabilityMinChange.bind(this)}
+          selectMax={this.onAvailabilityMaxChange.bind(this)}
+        />
+      );
+    }
   }
 
   render(){
@@ -97,11 +115,12 @@ class FiltersScreen extends Component {
 
     const buttonStyle = {
       button: {
-        alignSelf: "center",
+        // alignSelf: "center",
         backgroundColor: '#F9BA32',
         borderRadius: 5,
         paddingVertical: 10,
-        paddingHorizontal: 50
+        paddingHorizontal: 50,
+        height: 45
       },
       text:{
         fontSize: 20,
@@ -127,7 +146,11 @@ class FiltersScreen extends Component {
           placeholder="e.g. electrician"
         />
 
-        <View style={{alignSelf: 'center',justifyContent: 'center', alignItems: 'center', flexDirection: 'row'}}>
+        <View style={{
+          flex: 1,
+          justifyContent: 'space-around',
+          flexDirection: 'row'}}
+        >
           <Button
             style={buttonStyle}
             content="$ Rate"
@@ -148,25 +171,6 @@ class FiltersScreen extends Component {
           changed={this.onExperienceChange.bind(this)}
           value={experience}
           placeholder="e.g. 10 (years without units)"
-        />
-
-        <Date
-          label="Start Date"
-          changed={this.onAvailabilityMinChange.bind(this)}
-          value={availabilityMin}
-        />
-
-        <Date
-          label={"\xa0"+"End Date"}
-          changed={this.onAvailabilityMaxChange.bind(this)}
-          value={availabilityMax}
-        />
-
-        <Input
-          label="Rate"
-          // changed={this.onRateChange.bind(this)}
-          // value={rate}
-          placeholder="e.g. $200 (without units)"
         />
 
         <View
@@ -209,6 +213,7 @@ class FiltersScreen extends Component {
         <Button content="Search" pressed={this.onSearchButtonPress.bind(this)} />
 
         {this.showRateOptions(rateMin,rateMax)}
+        {this.showDateOptions(availabilityMin,availabilityMax)}
       </Card>
     );
   }
