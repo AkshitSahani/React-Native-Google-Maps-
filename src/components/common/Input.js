@@ -13,7 +13,8 @@ const Input = (props) => {
           value={props.value}
           placeholder={props.placeholder}
           placeholderTextColor="#2F3131"
-          onFocus={props.focussed}/>
+          onFocus={props.focussed}
+          underlineColorAndroid={'rgba(0,0,0,0)'}/>
       </View>
     )
 };
