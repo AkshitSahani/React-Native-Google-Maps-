@@ -59,7 +59,13 @@ export const search = inputData => {
                     "value": inputData[prop].toLowerCase()
                 };
                 break;
-            case "rate":
+            case "rateMin":
+                filter[prop] = {
+                    "operator": ">=",
+                    "value": parseInt(inputData[prop])
+                };
+                break;
+            case "rateMax":
                 filter[prop] = {
                     "operator": "<=",
                     "value": parseInt(inputData[prop])
