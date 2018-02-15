@@ -18,8 +18,14 @@ export const experienceChange = input => {
   return {type: 'experienceChange', payload: input};
 }
 
-export const rateChange = input => {
-  return {type: 'rateChange', payload: input};
+export const rateMinChange = input => {
+  console.log('rateMin: ',input);
+  return {type: 'rateMinChange', payload: input};
+}
+
+export const rateMaxChange = input => {
+  console.log('rateMax: ',input);
+  return {type: 'rateMaxChange', payload: input};
 }
 
 export const ratingChange = input => {
