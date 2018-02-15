@@ -1,4 +1,5 @@
 import React from 'react';
+import {View, Image} from 'react-native';
 import {Button, Spinner, Header, Card, CardItem} from './common';
 import {Actions} from 'react-native-router-flux'
 
