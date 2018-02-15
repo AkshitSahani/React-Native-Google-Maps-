@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text} from 'react-native';
+import {Text, Image} from 'react-native';
 import {Card, CardItem, Input, Button, Spinner} from './common';
 import {connect} from 'react-redux';
 import {signUp} from './actionCreators';
@@ -8,41 +8,63 @@ class SignUpForm extends Component {
   render(){
     return (
       <Card style={this.props.style}>
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: -72}}/>
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 18, marginBottom: -20}}/>
         <CardItem>
-          <Input label="Name" placeholder="Name" value={this.props.name} changed={(text)=>{this.props.nameChanged(text)}}/>
+          <Input placeholder="Name" value={this.props.name} changed={(text)=>{this.props.nameChanged(text)}}/>
         </CardItem>
 
         <CardItem>
-          <Input label="Company" placeholder="Company" value={this.props.company} changed={(text)=>{this.props.companyChanged(text)}}/>
+          <Input placeholder="Company" value={this.props.company} changed={(text)=>{this.props.companyChanged(text)}}/>
         </CardItem>
 
         <CardItem>
-          <Input label="Phone Number" placeholder="Phone Number" value={this.props.phone} changed={(text)=>{this.props.phoneChanged(text)}}/>
+          <Input placeholder="Phone Number" value={this.props.phone} changed={(text)=>{this.props.phoneChanged(text)}}/>
         </CardItem>
 
         <CardItem>
-          <Input label="Email Address" placeholder="Email Address" value={this.props.email} changed={(text)=>{this.props.emailChanged(text)}}/>
+          <Input placeholder="Email Address" value={this.props.email} changed={(text)=>{this.props.emailChanged(text)}}/>
         </CardItem>
 
         <CardItem>
-          <Input secure label="Password" placeholder="Password" value={this.props.password} changed={(text)=>{this.props.passwordChanged(text)}}/>
+          <Input secure placeholder="Password" value={this.props.password} changed={(text)=>{this.props.passwordChanged(text)}}/>
         </CardItem>
 
         <CardItem>
-          <Input secure label="Confirm Password" placeholder="Confirm Password" value={this.props.passwordConfirmation} changed={(text)=>{this.props.confirmationChanged(text)}}/>
+          <Input secure placeholder="Confirm Password" value={this.props.passwordConfirmation} changed={(text)=>{this.props.confirmationChanged(text)}}/>
         </CardItem>
 
-        <CardItem>
+
           {this.props.loading ? <Spinner size="large" /> : null}
-          <Button content="Sign Up" pressed={this.props.signUpUser.bind(this, this.props.email, this.props.password, this.props.phone, this.props.company, this.props.name)}/>
-        </CardItem>
-        {this.props.signedUp ? <Text style={{color: 'green'}}>Congrats, your account was successfully created!</Text> : null}
+          <Button content="Sign Up" pressed={this.props.signUpUser.bind(this, this.props.email, this.props.password, this.props.phone, this.props.company, this.props.name)} style={style}/>
+
+        {/* {this.props.signedUp ? <Text style={{color: 'green'}}>Congrats, your account was successfully created!</Text> : null} */}
         {this.props.error ? <Text style={{color: 'red'}}>{this.props.error.message}</Text> : null}
         {this.props.passwordNotConfirmed ? <Text style={{color: 'red'}}>Password and Password Confirmation don't match! Please try again</Text> : null}
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Bottom.png'}} style={{height: 400, width: 150, position: 'absolute', left: 0, bottom: -205, resizeMode: 'contain'}}/>
       </Card>
     )
   };
 };
+
+const style = {
+  button:{
+    alignSelf: "center",
+    backgroundColor: '#F9BA32',
+    borderRadius: 5,
+    width: '80%',
+    marginBottom: 12,
+    height: '9%',
+    paddingTop: '4%',
+    zIndex: 10
+  },
+  text:{
+    fontSize:20,
+    color: 'white',
+    alignSelf: 'center',
+    fontWeight: 'bold',
+  }
+}
 
 const mapStateToProps = (state) => {
   const {email, password, loading, error, signedUp, name, phone, company, passwordConfirmation, passwordNotConfirmed} = state.auth;
