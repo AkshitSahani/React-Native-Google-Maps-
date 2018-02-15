@@ -12,7 +12,7 @@ const RouterComponent = () => {
     <Router>
       <Scene key="root" hideNavBar>
         <Scene key="homepage">
-          <Scene key="HomePage" component={HomePage} initial/>
+          <Scene key="HomePage" component={HomePage} initial hideNavBar/>
         </Scene>
         <Scene key="main">
           <Scene key="SearchScreen" component={SearchScreen} leftTitle="Nav" onLeft={()=>{console.log('show nav bar');}}></Scene>

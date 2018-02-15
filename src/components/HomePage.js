@@ -5,12 +5,12 @@ import {Actions} from 'react-native-router-flux'
 
 const HomePage = () => {
   return(
-    <Card>
-      <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: -72}}/>
-      <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 110, marginBottom: 150}}/>
-      <Image source={{uri: 'https://torinit.com/assets/workorbe/Orange-Hexagon-Bottom.png'}} style={{height: 400, width: 150, position: 'absolute', left: -32, top: '60%', resizeMode: 'contain'}}/>
+    <Card style={{backgroundColor:'white', height: '100%'}}>
+      <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 18, right: -72}}/>
+      <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 150, marginBottom: 175}}/>
       <Button content="Gig Seeker" style={style}/>
       <Button content="Gig Provider" pressed={()=>{Actions.main()}} style={style}/>
+      <Image source={{uri: 'https://torinit.com/assets/workorbe/Orange-Hexagon-Bottom.png'}} style={{height: 400, width: 150, position: 'absolute', left: -32, top: '61%', resizeMode: 'contain'}}/>
     </Card>
   )
 };
@@ -22,7 +22,7 @@ const style = {
     borderRadius: 5,
     width: '80%',
     marginBottom: 20,
-    height: '10%',
+    height: '8.5%',
     paddingTop: '4%',
     zIndex: 10
   },
