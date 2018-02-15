@@ -2,7 +2,8 @@ import React from 'react';
 
 const initialState = {
   experience: '',
-  rate:'',
+  rateMin:0,
+  rateMax:0,
   rating: '5',
   radius: 10,
   capability:'',
@@ -19,8 +20,10 @@ const FiltersReducer = (state = initialState, action) => {
       return {...state, capability: action.payload};
     case 'experienceChange':
       return {...state, experience: action.payload};
-    case 'rateChange':
-      return {...state, rate: action.payload};
+    case 'rateMinChange':
+      return {...state, rateMin: action.payload};
+    case 'rateMaxChange':
+      return {...state, rateMax: action.payload};
     case 'ratingChange':
       return {...state, rating: action.payload};
     case 'insuranceChange':

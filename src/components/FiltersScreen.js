@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Switch, Picker,Platform } from 'react-native';
-import {Header, Input, Card, Button, SwitchInput, Date, SlideBar, Radius } from './common';
+import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
 import {search} from '../actionCreators/search';
 
 class FiltersScreen extends Component {
+  state = {
+    rateClicked: false,
+    dateClicked: false
+  };
 
   onCapabilityChange(capability) {
     this.props.capabilityChange(capability);
@@ -16,8 +20,12 @@ class FiltersScreen extends Component {
     this.props.experienceChange(experience);
   }
 
-  onRateChange(rate) {
-    this.props.rateChange(rate);
+  onRateMinChange(ratemin) {
+    this.props.rateMinChange(ratemin);
+  }
+
+  onRateMaxChange(ratemax) {
+    this.props.rateMaxChange(ratemax);
   }
 
   onRatingChange(rating) {
@@ -44,16 +52,58 @@ class FiltersScreen extends Component {
     this.props.availabilityMaxChange(availabilityMaxChange);
   }
 
-  onButtonPress() {
+  onSearchButtonPress() {
     this.props.search({...this.props.filters});
     Actions.results();
-    console.log('searchActions: ',searchActions);
+  }
+
+  onRateButtonPress() {
+    // this.props.search({...this.props.filters});
+    this.setState({rateClicked:!this.state.rateClicked});
+    if (this.state.dateClicked) {
+      this.setState({dateClicked:!this.state.dateClicked});
+    }
+  }
+
+  showRateOptions(rateMin,rateMax) {
+    // return (this.state.rateClicked ? <Rate/> : '' );
+    if (this.state.rateClicked) {
+      return (
+        <Rate
+          rateMin={rateMin}
+          rateMax={rateMax}
+          selectMin={this.onRateMinChange.bind(this)}
+          selectMax={this.onRateMaxChange.bind(this)}
+        />
+      );
+    }
+  }
+
+  onDateButtonPress() {
+    this.setState({dateClicked:!this.state.dateClicked});
+    if (this.state.rateClicked) {
+      this.setState({rateClicked:!this.state.rateClicked});
+    }
+  }
+
+  showDateOptions(availabilityMin,availabilityMax) {
+    if (this.state.dateClicked) {
+      return (
+        <DatePage
+          availabilityMin={availabilityMin}
+          availabilityMax={availabilityMax}
+          selectMin={this.onAvailabilityMinChange.bind(this)}
+          selectMax={this.onAvailabilityMaxChange.bind(this)}
+        />
+      );
+    }
   }
 
   render(){
 
     const { experience,
-            rate,
+            rateMin,
+            rateMax,
             radius,
             capability,
             insurance,
@@ -63,8 +113,30 @@ class FiltersScreen extends Component {
             availabilityMax
             } = this.props.filters;
 
+    const buttonStyle = {
+      button: {
+        // alignSelf: "center",
+        backgroundColor: '#F9BA32',
+        borderRadius: 5,
+        paddingVertical: 10,
+        paddingHorizontal: 50,
+        height: 45
+      },
+      text:{
+        fontSize: 20,
+        color: 'white'
+      }
+    };
+
     return(
-      <Card>
+      <Card style={{
+        margin:0,
+        position: 'absolute',
+        top: 0,
+        height: '100%',
+        left: 0,
+        right: 0
+      }}>
         <Header title="Filters Screen" />
 
         <Input
@@ -74,32 +146,31 @@ class FiltersScreen extends Component {
           placeholder="e.g. electrician"
         />
 
-        {/* dropdown to show either current location or a user address*/}
+        <View style={{
+          flex: 1,
+          justifyContent: 'space-around',
+          flexDirection: 'row'}}
+        >
+          <Button
+            style={buttonStyle}
+            content="$ Rate"
+            pressed={this.onRateButtonPress.bind(this)}
+          />
+
+
+          <Button
+            style={buttonStyle}
+            content="Date"
+            pressed={this.onDateButtonPress.bind(this)}
+          />
+        </View>
+
 
         <Input
           label="Experience"
           changed={this.onExperienceChange.bind(this)}
           value={experience}
           placeholder="e.g. 10 (years without units)"
-        />
-
-        <Date
-          label="Start Date"
-          changed={this.onAvailabilityMinChange.bind(this)}
-          value={availabilityMin}
-        />
-
-        <Date
-          label={"\xa0"+"End Date"}
-          changed={this.onAvailabilityMaxChange.bind(this)}
-          value={availabilityMax}
-        />
-
-        <Input
-          label="Rate"
-          changed={this.onRateChange.bind(this)}
-          value={rate}
-          placeholder="e.g. $200 (without units)"
         />
 
         <View
@@ -122,15 +193,6 @@ class FiltersScreen extends Component {
           </Picker>
         </View>
 
-        {/* <SlideBar
-          label={'Radius'  + ' ('+ Math.floor(radius) + ' km) '}
-          max={120}
-          min={1}
-          changed={this.onRadiusChange.bind(this)}
-          value={radius}
-          step={2}
-        /> */}
-
         <Radius
           pressed={this.onRadiusChange.bind(this)}
           radius={radius}
@@ -148,7 +210,10 @@ class FiltersScreen extends Component {
           value={unionized}
         />
 
-        <Button content="Search" pressed={this.onButtonPress.bind(this)} />
+        <Button content="Search" pressed={this.onSearchButtonPress.bind(this)} />
+
+        {this.showRateOptions(rateMin,rateMax)}
+        {this.showDateOptions(availabilityMin,availabilityMax)}
       </Card>
     );
   }
