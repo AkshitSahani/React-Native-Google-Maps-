@@ -8,7 +8,7 @@ class ListItem extends Component {
 
   render() {
     const { capability,rate,rating, name, experience, radius } = this.props.user;
-    const roundedRadius = radius.toFixed(2);
+    const roundedRadius = radius ? radius.toFixed(2) : '';
     return (
       <Card style={style.general}>
 

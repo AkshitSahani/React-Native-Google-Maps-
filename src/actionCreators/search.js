@@ -137,13 +137,13 @@ export const search = inputData => {
 
           for (prop in filter) {
 
-            if (prop === 'coordinates' || prop === 'radius') {
-              console.log(`coordinates: ${user[prop]}: ${filter[prop].value}`);
-            } else {
-              console.log(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`,eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`));
-            }
+            // if (prop === 'coordinates' || prop === 'radius') {
+            //   console.log(`coordinates: ${user[prop]}: ${filter[prop].value}`);
+            // } else {
+            //   console.log(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`,eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`));
+            // }
 
-            if (prop === 'coordinates') {
+            if (prop === 'coordinates' && user['coordinates']) {
               let radiusInfo = isWithinMyRadius(filter[prop].value,user[prop],filter.radius.value);
               if (!radiusInfo[0]) {
                 return false;

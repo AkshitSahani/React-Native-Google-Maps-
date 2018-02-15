@@ -81,13 +81,15 @@ class Map extends Component {
 
   renderMarkers(){
     return this.props.users.map(user => {
-      return (
-        <MapView.Marker
-          key={ user.name + user.capability}
-          coordinate={ user.coordinates }
-          title={user.name}
-        />
-      );
+      if (user.coordinates) {
+        return (
+          <MapView.Marker
+            key={ user.name + user.capability}
+            coordinate={ user.coordinates }
+            title={user.name}
+          />
+        );
+      }
     });
   }
 
