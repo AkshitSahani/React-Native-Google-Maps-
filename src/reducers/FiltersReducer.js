@@ -21,9 +21,9 @@ const FiltersReducer = (state = initialState, action) => {
     case 'experienceChange':
       return {...state, experience: action.payload};
     case 'rateMinChange':
-      return {...state, rate: action.payload};
+      return {...state, rateMin: action.payload};
     case 'rateMaxChange':
-      return {...state, rate: action.payload};
+      return {...state, rateMax: action.payload};
     case 'ratingChange':
       return {...state, rating: action.payload};
     case 'insuranceChange':

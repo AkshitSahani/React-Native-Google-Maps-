@@ -62,13 +62,15 @@ class FiltersScreen extends Component {
     this.setState({rateClicked:!this.state.rateClicked});
   }
 
-  showRateOptions() {
+  showRateOptions(rateMin,rateMax) {
     // return (this.state.rateClicked ? <Rate/> : '' );
     if (this.state.rateClicked) {
       return (
         <Rate
-          selectMax={this.onRateMinChange.bind(this)}
-          selectMin={this.onRateMaxChange.bind(this)}
+          rateMin={rateMin}
+          rateMax={rateMax}
+          selectMin={this.onRateMinChange.bind(this)}
+          selectMax={this.onRateMaxChange.bind(this)}
         />
       );
     }
@@ -206,7 +208,7 @@ class FiltersScreen extends Component {
 
         <Button content="Search" pressed={this.onSearchButtonPress.bind(this)} />
 
-        {this.showRateOptions()}
+        {this.showRateOptions(rateMin,rateMax)}
       </Card>
     );
   }

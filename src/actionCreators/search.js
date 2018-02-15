@@ -156,7 +156,11 @@ export const search = inputData => {
               } else {
                 user['radius'] = radiusInfo[1];
               }
-            } else if(prop !== 'radius' && user[prop] && !eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`)){
+            } else if(prop !== 'radius' && prop.substring(0,3) !== 'rate' && user[prop] && !eval(`${user[prop]} ${filter[prop].operator} ${filter[prop].value}`)){
+              return false;
+            } else if(prop === 'rateMin' && !eval(`${user['rate']} ${filter[prop].operator} ${filter[prop].value}`)) {
+              return false;
+            } else if(prop === 'rateMax' && !eval(`${user['rate']} ${filter[prop].operator} ${filter[prop].value}`)) {
               return false;
             }
           }
