@@ -7,14 +7,12 @@ import {Button} from './';
 
 const Rate = props => {
 
-  let ratesMin = [];
-  let ratesMax = [];
+  let ratesMin = [{diaplay:'Any', value:1}];
+  let ratesMax = [{diaplay:'Any', value:100000000000000}];
 
-  let i = 10;
-
-  for (i=10; i<= 300; i += 10) {
-    ratesMax.push({rate:i});
-    ratesMin.push({rate:i-5});
+  for (let i=10; i<= 300; i += 10) {
+    ratesMin.push({diaplay:'$ ' + (i-5), value:i});
+    ratesMax.push({diaplay:'$ ' + i, value:i});
   }
 
   return(
@@ -22,7 +20,7 @@ const Rate = props => {
     <View style={style.overall}>
       <View style={{height: '15%'}}>
         <Text style={style.text}>Hourly Rate</Text>
-        <Text style={style.text}>{'$' + props.rateMin + ' - $' + props.rateMax}</Text>
+        <Text style={style.text}>{(props.rateMin === 1 ? 'Any' : '$' + props.rateMin) + ' - ' + (props.rateMax === 100000000000000 ? 'Any' : '$' + props.rateMax)}</Text>
       </View>
 
       <View style={{...style.row,height: '12%'}}>
@@ -32,38 +30,37 @@ const Rate = props => {
 
       <View style={{...style.row,height: '50%'}}>
 
-          <FlatList
-            data={ratesMin}
-            keyExtractor={item => ('rateMin' + item.rate)}
-            renderItem={({item}) => {
-                return (
-                  <Text
-                    style={props.rateMin === item.rate ? style.textSelected : style.text}
-                    onPress={props.selectMin.bind(null,item.rate)}
-                  >
-                    {'$ ' + item.rate}
-                  </Text>
-                );
-              }
+        <FlatList
+          data={ratesMin}
+          keyExtractor={item => ('rateMin' + item.value)}
+          renderItem={({item}) => {
+              return (
+                <Text
+                  style={props.rateMin === item.value ? style.textSelected : style.text}
+                  onPress={props.selectMin.bind(null,item.value)}
+                >
+                  {item.diaplay}
+                </Text>
+              );
             }
-          />
+          }
+        />
 
-          <FlatList
-            data={ratesMax}
-            keyExtractor={item => ('rateMax' + item.rate)}
-            renderItem={({item}) => {
-                return (
-                  <Text
-                    style={props.rateMax === item.rate ? style.textSelected : style.text}
-                    onPress={props.selectMax.bind(null,item.rate)}
-
-                  >
-                    {'$ ' + item.rate}
-                  </Text>
-                );
-              }
+        <FlatList
+          data={ratesMax}
+          keyExtractor={item => ('rateMax' + item.value)}
+          renderItem={({item}) => {
+              return (
+                <Text
+                  style={props.rateMax === item.value ? style.textSelected : style.text}
+                  onPress={props.selectMax.bind(null,item.value)}
+                >
+                  {item.diaplay}
+                </Text>
+              );
             }
-          />
+          }
+        />
 
       </View>
       <Button
@@ -78,7 +75,7 @@ const Rate = props => {
             // paddingHorizontal: 40,
             width:'85%',
             height: 45,
-            marginVertical:10
+            marginVertical:20
           },
           text:{
             fontSize: 20,
@@ -98,7 +95,8 @@ const style = {
     alignItems: 'center',
 
     // flexDirection: 'row',
-    height:'75%',
+    height:'70%',
+    width:'100%',
     position: 'absolute',
     bottom: 0,
     left: 0,

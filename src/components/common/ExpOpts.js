@@ -15,10 +15,10 @@ const ExpOpts = props => {
     <View style={style.overall}>
       <View style={{height: '15%'}}>
         <Text style={style.text}>Experience</Text>
-        <Text style={style.text}>{(props.expMin === 0 ? 'any ' : props.expMin) + ' years of experience'}</Text>
+        <Text style={style.text}>{(props.expMin === 0 ? 'Any' : props.expMin) + ' years of experience'}</Text>
       </View>
 
-      <View style={{...style.row,height: '50%'}}>
+      <View style={{...style.row,height: '70%'}}>
 
           <FlatList
             data={expMin}
