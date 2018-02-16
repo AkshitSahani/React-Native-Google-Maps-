@@ -18,7 +18,7 @@ class SearchResults extends Component {
   };
 
   render(){
-    let top = 58;
+    let top = 55;
     if(this.props.users.length <= 1){
       top = 71;
     }

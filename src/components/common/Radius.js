@@ -61,7 +61,8 @@ const style = {
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginVertical: 15
   },
   button: {
   alignSelf: 'center',
