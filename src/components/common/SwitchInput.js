@@ -15,6 +15,7 @@ const style = {
   alignSelf: 'center',
   flexDirection: 'row',
   justifyContent: 'center',
-  alignItems: 'center'
+  alignItems: 'center',
+  marginVertical:15
 }
 export {SwitchInput};

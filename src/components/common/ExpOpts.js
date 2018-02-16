@@ -2,63 +2,34 @@ import React from 'react';
 import {View, Text, Platform, FlatList} from 'react-native';
 import {Button} from './';
 
-// onPress={select.bind(null, i)}
-// {renderRateOptions('rateMax', props.selectMax)}
+const ExpOpts = props => {
 
-const Rate = props => {
+  let expMin = [{display:'any',value:0}];
 
-  let ratesMin = [];
-  let ratesMax = [];
-
-  let i = 10;
-
-  for (i=10; i<= 300; i += 10) {
-    ratesMax.push({rate:i});
-    ratesMin.push({rate:i-5});
+  for (let i = 2; i <= 16; i += 2) {
+    expMin.push({display: i + ' years', value: i});
   }
 
   return(
 
     <View style={style.overall}>
       <View style={{height: '15%'}}>
-        <Text style={style.text}>Hourly Rate</Text>
-        <Text style={style.text}>{'$' + props.rateMin + ' - $' + props.rateMax}</Text>
-      </View>
-
-      <View style={{...style.row,height: '12%'}}>
-        <Text style={{...style.text,marginHorizontal:'20%'}}>Min</Text>
-        <Text style={{...style.text,marginHorizontal:'20%'}}>Max</Text>
+        <Text style={style.text}>Experience</Text>
+        <Text style={style.text}>{(props.expMin === 0 ? 'any ' : props.expMin) + ' years of experience'}</Text>
       </View>
 
       <View style={{...style.row,height: '50%'}}>
 
           <FlatList
-            data={ratesMin}
-            keyExtractor={item => ('rateMin' + item.rate)}
+            data={expMin}
+            keyExtractor={item => ('expMin' + item.display)}
             renderItem={({item}) => {
                 return (
                   <Text
-                    style={props.rateMin === item.rate ? style.textSelected : style.text}
-                    onPress={props.selectMin.bind(null,item.rate)}
+                    style={props.expMin === item.value ? style.textSelected : style.text}
+                    onPress={props.selectMin.bind(null,item.value)}
                   >
-                    {'$ ' + item.rate}
-                  </Text>
-                );
-              }
-            }
-          />
-
-          <FlatList
-            data={ratesMax}
-            keyExtractor={item => ('rateMax' + item.rate)}
-            renderItem={({item}) => {
-                return (
-                  <Text
-                    style={props.rateMax === item.rate ? style.textSelected : style.text}
-                    onPress={props.selectMax.bind(null,item.rate)}
-
-                  >
-                    {'$ ' + item.rate}
+                    {item.display}
                   </Text>
                 );
               }
@@ -67,7 +38,7 @@ const Rate = props => {
 
       </View>
       <Button
-        content="Set Rate"
+        content="Set Experience"
         pressed={props.close}
         style={{
           button: {
@@ -94,11 +65,8 @@ const Rate = props => {
 const style = {
   overall: {
     alignSelf: 'center',
-    // justifyContent: 'center',
     alignItems: 'center',
-
-    // flexDirection: 'row',
-    height:'75%',
+    height:'60%',
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -130,4 +98,4 @@ const style = {
   }
 }
 
-export { Rate };
+export { ExpOpts };

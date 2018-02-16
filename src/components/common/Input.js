@@ -5,7 +5,7 @@ const Input = (props) => {
 
     return(
       <View style={style}>
-        <Text>{props.label}</Text>
+        <Text style={{fontSize:15}}>{props.label}</Text>
         <TextInput secureTextEntry={props.secure}
           autoCorrect={false}
           style={{height: (Platform.OS == 'android' ? 40 : 40), width: '80%', borderBottomWidth: 0.5, fontSize: 18, borderBottomColor: 'grey', marginBottom: 20}}

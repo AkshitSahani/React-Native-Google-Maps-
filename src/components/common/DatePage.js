@@ -11,7 +11,7 @@ const DatePage = props => {
 
     <View style={style.overall}>
 
-      <View style={{...style.row,height: '69%'}}>
+      <View style={{...style.row,height: '40%'}}>
         <Date
           label="Start Date"
           changed={props.selectMin}
