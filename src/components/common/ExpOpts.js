@@ -66,7 +66,7 @@ const style = {
   overall: {
     alignSelf: 'center',
     alignItems: 'center',
-    height:'60%',
+    height:'70%',
     position: 'absolute',
     bottom: 0,
     left: 0,
