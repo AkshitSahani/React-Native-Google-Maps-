@@ -11,3 +11,4 @@ export * from './Radius';
 export * from './Rate';
 export * from './Rating';
 export * from './DatePage';
+export * from './ExpOpts';

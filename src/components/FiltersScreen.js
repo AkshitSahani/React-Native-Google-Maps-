@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Switch, Picker,Platform } from 'react-native';
-import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate, Rating } from './common';
+import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate, Rating,ExpOpts } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
 import {search} from '../actionCreators/search';
@@ -9,7 +9,8 @@ import {search} from '../actionCreators/search';
 class FiltersScreen extends Component {
   state = {
     rateClicked: false,
-    dateClicked: false
+    dateClicked: false,
+    expClicked: false
   };
 
   onCapabilityChange(capability) {
@@ -58,11 +59,13 @@ class FiltersScreen extends Component {
   }
 
   onRateButtonPress() {
-    // this.props.search({...this.props.filters});
     this.setState({rateClicked:!this.state.rateClicked});
-    if (this.state.dateClicked) {
-      this.setState({dateClicked:!this.state.dateClicked});
-    }
+    this.onDateCloseButtonPress();
+    this.onExpCloseButtonPress();
+  }
+
+  onRateCloseButtonPress() {
+    this.setState({rateClicked:false});
   }
 
   onSetRateButtonPress() {
@@ -88,9 +91,12 @@ class FiltersScreen extends Component {
 
   onDateButtonPress() {
     this.setState({dateClicked:!this.state.dateClicked});
-    if (this.state.rateClicked) {
-      this.setState({rateClicked:!this.state.rateClicked});
-    }
+    this.onRateCloseButtonPress();
+    this.onExpCloseButtonPress();
+  }
+
+  onDateCloseButtonPress(){
+    this.setState({dateClicked:false});
   }
 
   showDateOptions(availabilityMin,availabilityMax) {
@@ -106,7 +112,27 @@ class FiltersScreen extends Component {
     }
   }
 
+  onExperienceButtonPress() {
+    this.setState({expClicked:!this.state.expClicked});
+    this.onDateCloseButtonPress();
+    this.onRateCloseButtonPress();
+  }
 
+  showExperienceOptions(expMin) {
+    if (this.state.expClicked) {
+      return (
+        <ExpOpts
+          expMin={expMin}
+          selectMin={this.onExperienceChange.bind(this)}
+          close={this.onExpCloseButtonPress.bind(this)}
+        />
+      );
+    }
+  }
+
+  onExpCloseButtonPress() {
+    this.setState({expClicked:false});
+  }
 
   render(){
 
@@ -194,12 +220,10 @@ class FiltersScreen extends Component {
           />
         </View>
 
-
-        <Input
-          label="Experience"
-          changed={this.onExperienceChange.bind(this)}
-          value={experience.toString()}
-          placeholder=""
+        <Button
+          style={searchButtonStyle}
+          content="Experience"
+          pressed={this.onExperienceButtonPress.bind(this)}
         />
 
 
@@ -229,6 +253,7 @@ class FiltersScreen extends Component {
 
         {this.showRateOptions(rateMin,rateMax)}
         {this.showDateOptions(availabilityMin,availabilityMax)}
+        {this.showExperienceOptions(experience)}
       </Card>
     );
   }
