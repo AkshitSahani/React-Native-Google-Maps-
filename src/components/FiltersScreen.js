@@ -163,7 +163,6 @@ class FiltersScreen extends Component {
         backgroundColor: '#F9BA32',
         borderRadius: 5,
         paddingVertical: 10,
-        // paddingHorizontal: 40,
         width:'85%',
         height: 45,
         marginVertical:15
@@ -186,10 +185,10 @@ class FiltersScreen extends Component {
       }}>
 
         <Input
-          label="Capability"
+          label=""
           changed={this.onCapabilityChange.bind(this)}
           value={capability}
-          placeholder=""
+          placeholder="Capability"
         />
 
         <View
