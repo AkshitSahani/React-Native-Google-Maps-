@@ -11,8 +11,8 @@ const Rate = props => {
   let ratesMax = [{diaplay:'Any', value:100000000000000}];
 
   for (let i=10; i<= 300; i += 10) {
+    ratesMin.push({diaplay:'$ ' + (i-5), value:i});
     ratesMax.push({diaplay:'$ ' + i, value:i});
-    ratesMin.push({diaplay:'$ ' + i, value:i});
   }
 
   return(

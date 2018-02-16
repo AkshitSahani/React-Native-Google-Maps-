@@ -35,7 +35,7 @@ const style = {
     // justifyContent: 'center',
     alignItems: 'center',
     // flexDirection: 'row',
-    height:'75%',
+    height:'70%',
     position: 'absolute',
     bottom: 0,
     left: 0,
