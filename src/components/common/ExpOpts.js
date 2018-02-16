@@ -65,10 +65,7 @@ const ExpOpts = props => {
 const style = {
   overall: {
     alignSelf: 'center',
-    // justifyContent: 'center',
     alignItems: 'center',
-
-    // flexDirection: 'row',
     height:'70%',
     position: 'absolute',
     bottom: 0,

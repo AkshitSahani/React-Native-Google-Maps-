@@ -68,6 +68,12 @@ class FiltersScreen extends Component {
     this.setState({rateClicked:false});
   }
 
+  onSetRateButtonPress() {
+    console.log('rateClicked:', this.state.rateClicked);
+    this.setState({rateClicked:false});
+    console.log('rateClicked:', this.state.rateClicked);
+  }
+
   showRateOptions(rateMin,rateMax) {
     // return (this.state.rateClicked ? <Rate/> : '' );
     if (this.state.rateClicked) {
@@ -77,7 +83,7 @@ class FiltersScreen extends Component {
           rateMax={rateMax}
           selectMin={this.onRateMinChange.bind(this)}
           selectMax={this.onRateMaxChange.bind(this)}
-          close={this.onRateCloseButtonPress.bind(this)}
+          close={this.onSetRateButtonPress.bind(this)}
         />
       );
     }
