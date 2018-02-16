@@ -1,11 +1,11 @@
 import React from 'react';
 
 const initialState = {
-  experience: '',
+  experience: 0,
   rateMin:0,
   rateMax:0,
-  rating: '5',
-  radius: 10,
+  rating:0,
+  radius:40075/2,
   capability:'',
   insurance:true,
   unionized:true,

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { View, Text, Switch, Picker,Platform } from 'react-native';
-import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate } from './common';
+import {Header, Input, Card, Button, SwitchInput, DatePage, SlideBar, Radius, Rate, Rating } from './common';
 import {Actions} from 'react-native-router-flux';
 import * as searchActions from '../actionCreators/searchFilter';
 import {search} from '../actionCreators/search';
@@ -65,6 +65,12 @@ class FiltersScreen extends Component {
     }
   }
 
+  onSetRateButtonPress() {
+    console.log('rateClicked:', this.state.rateClicked);
+    this.setState({rateClicked:false});
+    console.log('rateClicked:', this.state.rateClicked);
+  }
+
   showRateOptions(rateMin,rateMax) {
     // return (this.state.rateClicked ? <Rate/> : '' );
     if (this.state.rateClicked) {
@@ -74,6 +80,7 @@ class FiltersScreen extends Component {
           rateMax={rateMax}
           selectMin={this.onRateMinChange.bind(this)}
           selectMax={this.onRateMaxChange.bind(this)}
+          close={this.onSetRateButtonPress.bind(this)}
         />
       );
     }
@@ -99,6 +106,8 @@ class FiltersScreen extends Component {
     }
   }
 
+
+
   render(){
 
     const { experience,
@@ -113,7 +122,7 @@ class FiltersScreen extends Component {
             availabilityMax
             } = this.props.filters;
 
-    const buttonStyle = {
+    const rateAndDateButtonStyle = {
       button: {
         // alignSelf: "center",
         backgroundColor: '#F9BA32',
@@ -128,6 +137,24 @@ class FiltersScreen extends Component {
       }
     };
 
+    const searchButtonStyle = {
+      button: {
+        alignSelf: 'center',
+        backgroundColor: '#F9BA32',
+        borderRadius: 5,
+        paddingVertical: 10,
+        // paddingHorizontal: 40,
+        width:'85%',
+        height: 45,
+        marginVertical:15
+      },
+      text:{
+        fontSize: 20,
+        color: 'white',
+        textAlign: 'center'
+      }
+    };
+
     return(
       <Card style={{
         margin:0,
@@ -137,29 +164,31 @@ class FiltersScreen extends Component {
         left: 0,
         right: 0
       }}>
-        <Header title="Filters Screen" />
 
         <Input
           label="Capability"
           changed={this.onCapabilityChange.bind(this)}
           value={capability}
-          placeholder="e.g. electrician"
+          placeholder=""
         />
 
-        <View style={{
-          flex: 1,
-          justifyContent: 'space-around',
-          flexDirection: 'row'}}
+        <View
+          style={{
+            justifyContent: 'space-around',
+            flexDirection: 'row',
+            marginBottom:15
+          }}
         >
           <Button
-            style={buttonStyle}
+            style={rateAndDateButtonStyle}
             content="$ Rate"
             pressed={this.onRateButtonPress.bind(this)}
+
           />
 
 
           <Button
-            style={buttonStyle}
+            style={rateAndDateButtonStyle}
             content="Date"
             pressed={this.onDateButtonPress.bind(this)}
           />
@@ -169,29 +198,10 @@ class FiltersScreen extends Component {
         <Input
           label="Experience"
           changed={this.onExperienceChange.bind(this)}
-          value={experience}
-          placeholder="e.g. 10 (years without units)"
+          value={experience.toString()}
+          placeholder=""
         />
 
-        <View
-          style={{
-          alignSelf: 'center',
-          flexDirection: 'row',
-          justifyContent: 'center'
-          }}
-        >
-          <Text>{'Rating ' + rating.toString()}</Text>
-          <Picker
-            style={{height: (Platform.OS == 'android' ? 40 : 20), width: 50}}
-            selectedValue={rating.toString()}
-            onValueChange={ this.onRatingChange.bind(this) }>
-            <Picker.Item label="5" value="5" />
-            <Picker.Item label="4" value="4" />
-            <Picker.Item label="3" value="3" />
-            <Picker.Item label="2" value="2" />
-            <Picker.Item label="1" value="1" />
-          </Picker>
-        </View>
 
         <Radius
           pressed={this.onRadiusChange.bind(this)}
@@ -210,7 +220,12 @@ class FiltersScreen extends Component {
           value={unionized}
         />
 
-        <Button content="Search" pressed={this.onSearchButtonPress.bind(this)} />
+        <Rating
+          pressed={this.onRatingChange.bind(this)}
+          rating={rating}
+        />
+
+        <Button style={searchButtonStyle} content="Search" pressed={this.onSearchButtonPress.bind(this)} />
 
         {this.showRateOptions(rateMin,rateMax)}
         {this.showDateOptions(availabilityMin,availabilityMax)}
