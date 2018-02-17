@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, Platform, ScrollView} from 'react-native';
-import {Date} from './';
+import {View, Text, Platform} from 'react-native';
+import {Date, Button} from './';
 
 // onPress={select.bind(null, i)}
 // {renderRateOptions('rateMax', props.selectMax)}
@@ -10,7 +10,6 @@ const DatePage = props => {
   return(
 
     <View style={style.overall}>
-
       <View style={{...style.row,height: '40%'}}>
         <Date
           label="Start Date"
@@ -23,8 +22,28 @@ const DatePage = props => {
           changed={props.selectMax}
           value={props.availabilityMax}
         />
-
       </View>
+      <Button
+        content="Set Date"
+        pressed={props.close}
+        style={{
+          button: {
+            alignSelf: 'center',
+            backgroundColor: '#F9BA32',
+            borderRadius: 5,
+            paddingVertical: 10,
+            // paddingHorizontal: 40,
+            width:'85%',
+            height: 45,
+            marginVertical:10
+          },
+          text:{
+            fontSize: 20,
+            color: 'white',
+            textAlign: 'center'
+          }
+        }}
+      />
     </View>
   );
 };

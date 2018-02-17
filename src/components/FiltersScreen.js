@@ -107,6 +107,7 @@ class FiltersScreen extends Component {
           availabilityMax={availabilityMax}
           selectMin={this.onAvailabilityMinChange.bind(this)}
           selectMax={this.onAvailabilityMaxChange.bind(this)}
+          close={this.onDateCloseButtonPress.bind(this)}
         />
       );
     }
