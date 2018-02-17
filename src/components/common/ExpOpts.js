@@ -37,27 +37,27 @@ const ExpOpts = props => {
           />
 
       </View>
-      <Button
-        content="Set Experience"
-        pressed={props.close}
-        style={{
-          button: {
-            alignSelf: 'center',
-            backgroundColor: '#F9BA32',
-            borderRadius: 5,
-            paddingVertical: 10,
-            // paddingHorizontal: 40,
-            width:'85%',
-            height: 45,
-            marginVertical:10
-          },
-          text:{
-            fontSize: 20,
-            color: 'white',
-            textAlign: 'center'
-          }
-        }}
-      />
+        <Button
+          content="Set Experience"
+          pressed={props.close}
+          style={{
+            button: {
+              alignSelf: 'center',
+              backgroundColor: '#F9BA32',
+              borderRadius: 5,
+              paddingVertical: 10,
+              // paddingHorizontal: 40,
+              width:'85%',
+              height: 45,
+              marginVertical:10
+            },
+            text:{
+              fontSize: 20,
+              color: 'white',
+              textAlign: 'center'
+            }
+          }}
+        />
     </View>
   );
 };

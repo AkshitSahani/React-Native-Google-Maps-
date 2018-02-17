@@ -18,38 +18,42 @@ class SearchResults extends Component {
   };
 
   render(){
-    let top = 55;
+
+    let top = (Platform.OS === 'android' ? 55 : 58);
+
     if(this.props.users.length <= 1){
       top = 71;
     }
+
     let height = (91 - top);
+
     return(
 
-   <Card>
-     <Header title="Seekers"/>
-     <Map height="100%" width="100%"/>
-     <View style={
-       this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'91%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
-      }>
-       <TouchableOpacity onPress={()=>{this.expandResults()}}>
-         {this.state.expanded ? <Image source={{uri: 'https://torinit.com/assets/workorbe/Down-Arrow.png'}} style={{width: 20, height: 20, alignSelf:'center', marginBottom: 10, marginTop: 10}}/> :
-                                <Image source={{uri: 'https://torinit.com/assets/workorbe/Up-Arrow.png'}} style={{width: 20, height: 20, alignSelf:'center', marginBottom: 10, marginTop: 10}}/> }
-       </TouchableOpacity>
-       {this.state.expanded ? <Text style={{position: 'absolute', top:10, right: 10, fontSize: 16}}> Search Results ({this.props.users.length})</Text> : null}
-       <FlatList
-         data={this.props.users}
-         keyExtractor={(item) => (item.name + item.capability)}
-         renderItem={({item}) => {
-             return (
-               <ListItem
-                 user={item}
-               />
-             );
+      <Card>
+       <Header title="Seekers"/>
+       <Map height="100%" width="100%"/>
+       <View style={
+         this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'91%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
+        }>
+         <TouchableOpacity onPress={()=>{this.expandResults()}}>
+           {this.state.expanded ? <Image source={{uri: 'https://torinit.com/assets/workorbe/Down-Arrow.png'}} style={{width: 20, height: 20, alignSelf:'center', marginBottom: 10, marginTop: 10}}/> :
+                                  <Image source={{uri: 'https://torinit.com/assets/workorbe/Up-Arrow.png'}} style={{width: 20, height: 20, alignSelf:'center', marginBottom: 10, marginTop: 10}}/> }
+         </TouchableOpacity>
+         {this.state.expanded ? <Text style={{position: 'absolute', top:10, right: 10, fontSize: 16}}> Search Results ({this.props.users.length})</Text> : null}
+         <FlatList
+           data={this.props.users}
+           keyExtractor={(item) => (item.name + item.capability)}
+           renderItem={({item}) => {
+               return (
+                 <ListItem
+                   user={item}
+                 />
+               );
+             }
            }
-         }
-       />
-     </View>
-   </Card>
+         />
+       </View>
+     </Card>
    );
 
 //     <Card>
