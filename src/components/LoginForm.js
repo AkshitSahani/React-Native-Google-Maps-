@@ -6,6 +6,12 @@ import {login} from './actionCreators';
 import {Actions} from 'react-native-router-flux';
 
 class LoginForm extends Component {
+
+  //need to figure out this error. Error message from signup page shows up on login page if you click back
+  // componentWillMount(){
+  //   return this.props.loadingLoginPage();
+  // };
+
   render() {
     return(
       <Card style={{backgroundColor: 'white', height: '100%'}}>
@@ -22,14 +28,14 @@ class LoginForm extends Component {
         <Text style={{color: '#426E86', alignSelf: 'flex-end', marginRight: '9.5%', fontSize: 16, marginBottom: 30}}>Forgot Password?</Text>
 
           {this.props.loading ? <Spinner size="large" /> : null}
-          {this.props.error ? <Text style={{color: 'red', fontSize: 14, alignSelf: 'center'}}>{this.props.error.message}</Text> : null}
           <Button content="Sign in" pressed={this.props.loginUser.bind(this, this.props.email, this.props.password)} style={style}/>
 
           {/* {this.props.loggedIn ? <Text>Congrats! You logged in!</Text> : null} */}
 
         <CardItem>
-          <TouchableOpacity onPress={()=>{Actions.SignUpForm();}}><Text style={{alignSelf: 'center', fontSize: 18, color:'#426E86', fontWeight: 'bold'}}>Create Account</Text></TouchableOpacity>
+          <TouchableOpacity onPress={()=>{this.props.moveToSignUp()}}><Text style={{alignSelf: 'center', fontSize: 18, color:'#426E86', fontWeight: 'bold'}}>Create Account</Text></TouchableOpacity>
         </CardItem>
+        {this.props.error ? <Text style={{color: 'red', fontSize: 14, alignSelf: 'center', marginTop: 20, width: '85%'}}>{this.props.error.message}</Text> : null}
         <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Bottom.png'}} style={{height: 400, width: 150, position: 'absolute', left: 0, bottom: -145, resizeMode: 'contain'}}/>
       </Card>
     )
@@ -71,7 +77,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     emailChanged: (text) => dispatch({type: 'emailChanged', value: text}),
     passwordChanged: (text) => dispatch({type: 'passwordChanged', value: text}),
-    loginUser: (email, password) => dispatch(login(email, password))
+    loginUser: (email, password) => dispatch(login(email, password)),
+    moveToSignUp: () => {dispatch({type: 'movingToSignUp'}); return Actions.SignUpForm();},
+    loadingLoginPage: () => dispatch({type: 'loadingLoginPage'}),
   };
 };
 

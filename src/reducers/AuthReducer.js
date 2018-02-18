@@ -38,11 +38,15 @@ const AuthReducer = (state = initialState, action) => {
     case 'signUpSuccess':
       return {...initialState, user: action.user, signedUp: true}
     case 'signUpFailure':
-      return {...state, error: action.error, password: '', loading: false, email: ''}
+      return {...state, error: action.error, password: '', loading: false, email: '', passwordConfirmation: ''}
     case 'signUpStart':
       return {...state, loading: true, error: '', passwordNotConfirmed: null}
     case 'passwordNotConfirmed':
       return {...state, passwordNotConfirmed: true, loading: false, password: '', passwordConfirmation: ''}
+    case 'movingToSignUp':
+      return {...state, error: ''}
+    case 'loadingLoginPage':
+      return {...state, error: ''}
     default:
       return state;
   }
