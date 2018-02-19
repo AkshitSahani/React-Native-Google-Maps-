@@ -15,12 +15,12 @@ const RouterComponent = () => {
           <Scene key="HomePage" component={HomePage} initial hideNavBar/>
         </Scene>
         <Scene key="main">
-          <Scene key="SearchScreen" component={SearchScreen} leftTitle="Nav" onLeft={()=>{console.log('show nav bar');}}></Scene>
-          <Scene key="FiltersScreen" component={FiltersScreen} />
+          <Scene key="SearchScreen" component={SearchScreen} leftTitle="Nav" onLeft={()=>{console.log('show nav bar');}} leftButtonTextStyle={{color: '#F9BA32'}}></Scene>
+          <Scene key="FiltersScreen" component={FiltersScreen} tintColor='#F9BA32'/>
         </Scene>
         <Scene key="results">
-          <Scene rightTitle="Refine" onRight={()=>{Actions.FiltersScreen();}} key="SearchResults" component={SearchResults} leftTitle="Nav" onLeft={()=>{console.log('show nav again');}}></Scene>
-          <Scene key="FiltersScreen" component={FiltersScreen} />
+          <Scene rightTitle="Refine" onRight={()=>{Actions.FiltersScreen();}} key="SearchResults" component={SearchResults} leftTitle="Nav" onLeft={()=>{console.log('show nav again');}} leftButtonTextStyle={{color: '#F9BA32'}} rightButtonTextStyle={{color: '#F9BA32'}} ></Scene>
+          <Scene key="FiltersScreen" component={FiltersScreen} tintColor='#F9BA32'/>
           <Scene key="LoginForm" component={LoginForm} />
         </Scene>
 

@@ -196,6 +196,7 @@ class FiltersScreen extends Component {
           changed={this.onCapabilityChange.bind(this)}
           value={capability}
           placeholder="Capability"
+          style={{backgroundColor: 'white'}}
         />
 
         <View

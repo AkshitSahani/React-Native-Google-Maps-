@@ -4,15 +4,15 @@ import {View, TextInput, Text, Platform} from 'react-native';
 const Input = (props) => {
 
     return(
-      <View style={style}>
+      <View style={[style, props.style]}>
         <Text style={{fontSize:15}}>{props.label}</Text>
         <TextInput secureTextEntry={props.secure}
           autoCorrect={false}
-          style={{height: (Platform.OS == 'android' ? 40 : 40), width: '80%', borderBottomWidth: 0.5, fontSize: 18, borderBottomColor: 'grey', marginBottom: 20}}
+          style={{height: (Platform.OS == 'android' ? 40 : 40), width: '80%', borderWidth: 0.5, fontSize: 18, marginBottom: 10, borderRadius: 5, marginTop: 10, backgroundColor: 'white'}}
           onChangeText={props.changed}
           value={props.value}
           placeholder={props.placeholder}
-          placeholderTextColor="#2F3131"
+          placeholderTextColor="grey"
           onFocus={props.focussed}
           underlineColorAndroid={'rgba(0,0,0,0)'}/>
       </View>

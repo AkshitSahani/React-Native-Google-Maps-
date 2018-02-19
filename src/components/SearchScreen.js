@@ -7,7 +7,7 @@ const SearchScreen = () =>{
   return(
     <Card>
       <CardItem>
-        <Input placeholder="Capability" focussed={()=>{Actions.FiltersScreen();}}/>
+        <Input placeholder=" Capability" focussed={()=>{Actions.FiltersScreen();}} style={{backgroundColor: '#426E86', width: '100%'}}/>
       </CardItem>
       <CardItem>
         <Map height="100%" width="100%" />

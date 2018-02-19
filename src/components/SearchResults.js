@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 import {View, FlatList,TextInput, Text, Platform, TouchableOpacity, Image} from 'react-native';
-import {Card, CardItem, Button, Header} from './common';
+import {Card, CardItem, Button} from './common';
 import {search} from '../actionCreators/search';
 import Map from './Map';
 import ListItem from './ListItem';
@@ -19,21 +19,24 @@ class SearchResults extends Component {
 
   render(){
 
-    let top = (Platform.OS === 'android' ? 55 : 58);
+    let top = (Platform.OS === 'android' ? 55 : 63);
 
     if(this.props.users.length <= 1){
       top = 71;
     }
 
-    let height = (91 - top);
+    let height = (100 - top);
 
     return(
 
       <Card>
-       <Header title="Seekers"/>
+       {this.state.expanded ? null : <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+         <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin} - ${this.props.filters.rateMax}</Text>
+         <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
+      </View>}
        <Map height="100%" width="100%"/>
        <View style={
-         this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'91%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
+         this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'100%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
         }>
          <TouchableOpacity onPress={()=>{this.expandResults()}}>
            {this.state.expanded ? <Image source={{uri: 'https://torinit.com/assets/workorbe/Down-Arrow.png'}} style={{width: 20, height: 20, alignSelf:'center', marginBottom: 10, marginTop: 10}}/> :
