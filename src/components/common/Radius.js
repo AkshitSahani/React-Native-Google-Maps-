@@ -1,23 +1,17 @@
 import React from 'react';
-import {View, Platform} from 'react-native';
+import {View, Platform, Text} from 'react-native';
 import {Button} from './';
 
 const Radius = props => {
   return(
+    <View style={{flexDirection: 'column', width: '80%', marginLeft: '10%', marginBottom: 10}}>
+    <Text style={{fontSize: 19, color: 'grey', marginLeft: '2%'}}>Search Radius</Text>
     <View style={style.general}>
       <Button
         content="< 25km"
         pressed={props.pressed.bind(null,25)}
         style={style}
         id={25}
-        clicked={props.radius}
-      />
-
-      <Button
-        content="< 50km"
-        pressed={props.pressed.bind(null,50)}
-        style={style}
-        id={50}
         clicked={props.radius}
       />
 
@@ -30,29 +24,31 @@ const Radius = props => {
       />
 
       <Button
-        content="< 100km"
-        pressed={props.pressed.bind(null,100)}
+        content="< 125km"
+        pressed={props.pressed.bind(null,125)}
         style={style}
-        id={100}
+        id={125}
         clicked={props.radius}
       />
 
       <Button
-        content="< 150km"
-        pressed={props.pressed.bind(null,150)}
+        content="< 200km"
+        pressed={props.pressed.bind(null,200)}
         style={style}
-        id={150}
+        id={200}
         clicked={props.radius}
       />
 
       <Button
-        content="> 150km"
-        pressed={props.pressed.bind(null,40075/2)} //Thug: 40075 Circumference of Earch :)
+        content="> 200km"
+        pressed={props.pressed.bind(null,40075/2)}
         style={style}
         id={40075/2}
         clicked={props.radius}
       />
+
     </View>
+  </View>
   );
 };
 
@@ -62,17 +58,21 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginVertical: 15
+    marginVertical: 15,
+    width: '80%',
+    marginLeft: '5%'
   },
   button: {
   alignSelf: 'center',
   borderWidth: 0.5,
   justifyContent: 'center',
   height:65,
-  width:65,
+  width:'24%',
   backgroundColor: "white",
-  borderWidth: 0.2,
-  borderColor: '#F9BA32'
+  borderRadius: 5,
+  borderColor: '#F9BA32',
+  marginLeft: 2,
+  marginRight: 2
   },
   text: {
     fontSize: 15,

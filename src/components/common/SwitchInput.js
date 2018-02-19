@@ -5,8 +5,12 @@ const SwitchInput = (props) => {
 
     return(
       <View style={style}>
-        <Text>{props.label}</Text>
-        <Switch style={{height: (Platform.OS == 'android' ? 40 : 20), width: 150}} onValueChange={props.changed} value={props.value} onFocus={props.focussed}/>
+        <Text style={{fontSize: 18}}>{props.label}</Text>
+        <View style={{flexDirection: 'row'}}>
+          {/* <Text style={{fontSize: 18}}>OFF</Text> */}
+          <Switch style={{height: (Platform.OS == 'android' ? 40 : 20), width: 150, marginLeft: 10}} onValueChange={props.changed} value={props.value} onFocus={props.focussed}/>
+          {/* <Text style={{fontSize: 18}}>ON</Text> */}
+        </View>
       </View>
     )
 };

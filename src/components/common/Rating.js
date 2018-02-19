@@ -4,12 +4,12 @@ import {Button} from './';
 
 const Rating = props => {
   return(
-    <View style={{marginBottom: 15, width: '80%'}}>
-      <View style={{flexDirection: 'row'}}>
-        <Image source={{uri: 'https://torinit.com/assets/workorbe/Star.png'}} style={{height: 20, width: 20, marginLeft: '12%'}}/>
+    <View style={{marginBottom: 10, width: '80%', marginLeft: '10%'}}>
+      <View style={{flexDirection: 'row', marginBottom:10}}>
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/Star.png'}} style={{height: 20, width: 20}}/>
         <Text style={{
           fontSize: 20,
-          marginLeft: '2%',
+          marginLeft: '1.5%',
           marginBottom:0,
           color: 'grey'
         }}> Rating </Text>
@@ -19,7 +19,7 @@ const Rating = props => {
         <Button
           content="Any"
           pressed={props.pressed.bind(null,1)}
-          style={style}
+          style={firstButtonStyle}
           id={1}
           clicked={props.rating}
         />
@@ -57,17 +57,48 @@ const style = {
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: '80%',
   },
   button: {
   alignSelf: 'center',
   borderWidth: 0.5,
   justifyContent: 'center',
   height:65,
-  width:65,
+  width:'25%',
   backgroundColor: "white",
-  borderWidth: 0.2,
-  borderColor: '#F9BA32'
+  borderColor: '#F9BA32',
+  borderRadius: 5,
+  marginLeft: 2,
+  marginRight: 2
+  },
+  text: {
+    fontSize: 15,
+    textAlign: 'center',
+    color: '#426E86'
+  },
+  buttonClicked:{
+    button:{
+      backgroundColor: '#426E86'
+    },
+    text:{
+      color: 'white'
+    }
+  }
+};
+
+const firstButtonStyle = {
+  button: {
+  alignSelf: 'center',
+  borderWidth: 0.5,
+  justifyContent: 'center',
+  height:65,
+  width:'46%',
+  backgroundColor: "white",
+  borderColor: '#F9BA32',
+  borderRadius: 5,
+  marginLeft: 8,
+  marginRight: 2
   },
   text: {
     fontSize: 15,

@@ -8,7 +8,7 @@ const Input = (props) => {
         <Text style={{fontSize:15}}>{props.label}</Text>
         <TextInput secureTextEntry={props.secure}
           autoCorrect={false}
-          style={{height: (Platform.OS == 'android' ? 40 : 40), width: '80%', borderWidth: 0.5, fontSize: 18, marginBottom: 10, borderRadius: 5, marginTop: 10, backgroundColor: 'white'}}
+          style={{height: (Platform.OS == 'android' ? 40 : 40), width: '80.5%', borderWidth: 0.5, fontSize: 18, marginBottom: 10, borderRadius: 5, marginTop: 10, backgroundColor: 'white', borderColor: 'grey'}}
           onChangeText={props.changed}
           value={props.value}
           placeholder={props.placeholder}
