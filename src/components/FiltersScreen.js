@@ -149,20 +149,39 @@ class FiltersScreen extends Component {
             availabilityMax
             } = this.props.filters;
 
-    const rateAndDateButtonStyle = {
-      button: {
-        // alignSelf: "center",
-        backgroundColor: '#F9BA32',
-        borderRadius: 5,
-        paddingVertical: 10,
-        paddingHorizontal: 50,
-        height: 45
-      },
-      text:{
-        fontSize: 20,
-        color: 'white'
-      }
+
+      const rateAndDateButtonStyle = {
+        button: {
+          // alignSelf: "center",
+          backgroundColor: '#F9BA32',
+          borderRadius: 5,
+          paddingVertical: 10,
+          width: '49%',
+
+          height: 45
+        },
+        text:{
+          fontSize: 20,
+          color: 'white',
+          alignSelf: 'center'
+        }
+      };
+    let rateAndDateViewStyle = {
+      justifyContent: 'space-around',
+      flexDirection: 'row',
+      marginBottom:15,
     };
+
+    if(Platform.OS === 'ios'){
+      rateAndDateViewStyle = {
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        marginBottom:15,
+        width: '81.5%',
+        marginLeft: '9.5%'
+      };
+    };
+
 
     const searchButtonStyle = {
       button: {
@@ -170,9 +189,11 @@ class FiltersScreen extends Component {
         backgroundColor: '#F9BA32',
         borderRadius: 5,
         paddingVertical: 10,
-        width:'85%',
+        width: '81%',
         height: 45,
-        marginVertical:15
+        marginTop: 0,
+        marginBottom: 15,
+        marginLeft: '1%'
       },
       text:{
         fontSize: 20,
@@ -200,25 +221,21 @@ class FiltersScreen extends Component {
         />
 
         <View
-          style={{
-            justifyContent: 'space-around',
-            flexDirection: 'row',
-            marginBottom:15
-          }}
+          style={rateAndDateViewStyle}
         >
-          <Button
-            style={rateAndDateButtonStyle}
-            content="$ Rate"
-            pressed={this.onRateButtonPress.bind(this)}
+            <Button
+              style={rateAndDateButtonStyle}
+              content="$ Rate"
+              pressed={this.onRateButtonPress.bind(this)}
 
-          />
+            />
 
 
-          <Button
-            style={rateAndDateButtonStyle}
-            content="Date"
-            pressed={this.onDateButtonPress.bind(this)}
-          />
+            <Button
+              style={rateAndDateButtonStyle}
+              content="Date"
+              pressed={this.onDateButtonPress.bind(this)}
+            />
         </View>
 
         <Button
@@ -228,9 +245,9 @@ class FiltersScreen extends Component {
         />
 
 
-        <Radius
-          pressed={this.onRadiusChange.bind(this)}
-          radius={radius}
+        <Rating
+          pressed={this.onRatingChange.bind(this)}
+          rating={rating}
         />
 
         <SwitchInput
@@ -245,9 +262,9 @@ class FiltersScreen extends Component {
           value={unionized}
         />
 
-        <Rating
-          pressed={this.onRatingChange.bind(this)}
-          rating={rating}
+        <Radius
+          pressed={this.onRadiusChange.bind(this)}
+          radius={radius}
         />
 
         <Button style={searchButtonStyle} content="Search" pressed={this.onSearchButtonPress.bind(this)} />

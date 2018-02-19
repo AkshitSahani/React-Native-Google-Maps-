@@ -1,16 +1,20 @@
 import React from 'react';
-import {View, Platform, Text} from 'react-native';
+import {View, Platform, Text, Image} from 'react-native';
 import {Button} from './';
 
 const Rating = props => {
   return(
-    <View style={{marginBottom: 15}}>
-      <Text style={{
-        fontSize: 20,
-        marginLeft: 70,
-        marginBottom:5,
-        color: '#426E86'
-      }}> Rating </Text>
+    <View style={{marginBottom: 15, width: '80%'}}>
+      <View style={{flexDirection: 'row'}}>
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/Star.png'}} style={{height: 20, width: 20, marginLeft: '12%'}}/>
+        <Text style={{
+          fontSize: 20,
+          marginLeft: '2%',
+          marginBottom:0,
+          color: 'grey'
+        }}> Rating </Text>
+      </View>
+
       <View style={style.general}>
         <Button
           content="Any"
