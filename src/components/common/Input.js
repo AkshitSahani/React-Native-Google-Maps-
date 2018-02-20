@@ -14,7 +14,8 @@ const Input = (props) => {
           placeholder={props.placeholder}
           placeholderTextColor="grey"
           onFocus={props.focussed}
-          underlineColorAndroid={'rgba(0,0,0,0)'}/>
+          underlineColorAndroid={'rgba(0,0,0,0)'}
+          autoFocus={props.autoFocus}/>
       </View>
     )
 };
