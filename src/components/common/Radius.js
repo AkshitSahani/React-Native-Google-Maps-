@@ -32,15 +32,15 @@ const Radius = props => {
       />
 
       <Button
-        content="< 200km"
-        pressed={props.pressed.bind(null,200)}
+        content="< 175km"
+        pressed={props.pressed.bind(null,175)}
         style={style}
-        id={200}
+        id={175}
         clicked={props.radius}
       />
 
       <Button
-        content="> 200km"
+        content="> 175km"
         pressed={props.pressed.bind(null,40075/2)}
         style={style}
         id={40075/2}
@@ -60,7 +60,7 @@ const style = {
     flexDirection: 'row',
     marginVertical: 15,
     width: '80%',
-    marginLeft: '5%'
+    marginLeft: '1.5%'
   },
   button: {
   alignSelf: 'center',

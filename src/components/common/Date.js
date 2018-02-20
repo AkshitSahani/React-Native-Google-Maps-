@@ -6,12 +6,12 @@ const Date = props => {
 
   return(
     <View style={style}>
-      <Text>{props.label}</Text>
+      <Text style={{alignSelf: 'center', marginLeft: 25, marginBottom:5}}>{props.label}</Text>
       <DatePicker
-        style={{width: 200}}
+        style={{width:150}}
         date={props.value}
         mode="date"
-        placeholder="select date"
+        placeholder="Select Date"
         format="YYYY-MM-DD"
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
@@ -23,7 +23,7 @@ const Date = props => {
             marginLeft: 0
           },
           dateInput: {
-            marginLeft: 36
+            marginLeft: 32
           }
           // ... You can check the source to find the other keys.
         }}
@@ -36,6 +36,7 @@ const Date = props => {
 const style = {
   alignSelf: 'center',
   // flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
+  // justifyContent: 'space-around'
 }
 export {Date};

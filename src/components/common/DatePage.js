@@ -31,11 +31,12 @@ const DatePage = props => {
             alignSelf: 'center',
             backgroundColor: '#F9BA32',
             borderRadius: 5,
-            paddingVertical: 10,
+            // paddingVertical: 15,
             // paddingHorizontal: 40,
-            width:'85%',
+            width:'81%',
             height: 45,
-            marginVertical:10
+            marginVertical:10,
+            justifyContent: 'center'
           },
           text:{
             fontSize: 20,
