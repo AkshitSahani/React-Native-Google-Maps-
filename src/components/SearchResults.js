@@ -91,28 +91,6 @@ class SearchResults extends Component {
      </Card>
    );
 
-//     <Card>
-//       <Header title="Seekers"/>
-//       <Map height="100%" width="100%"/>
-//       <View style={{position: 'absolute', backgroundColor: 'white', bottom:0, left: 0, right: 0, zIndex: 10}}>
-//         <FlatList
-//           // style={{zIndex: 100}}
-//           data={this.props.users}
-//           keyExtractor={(item) => (item.name + item.capability)}
-//           renderItem={({item}) => {
-//               console.log('user:!!!!!',item);
-//               return (
-//                 <ListItem
-//                   user={item}
-//                 />
-//               );
-//             }
-//           }
-//         />
-//       </View>
-//     </Card>
-//     );
-
   }
 }
 

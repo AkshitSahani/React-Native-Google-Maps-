@@ -7,7 +7,7 @@ import {signUp} from './actionCreators';
 class SignUpForm extends Component {
   render(){
     return (
-      <Card style={this.props.style}>
+      <Card style={{...this.props.style, height: '100%'}}>
         <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: -72}}/>
         <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 18, marginBottom: -20}}/>
         <CardItem>
@@ -38,9 +38,8 @@ class SignUpForm extends Component {
           {this.props.loading ? <Spinner size="large" /> : null}
           <Button content="Sign Up" pressed={this.props.signUpUser.bind(this, this.props.email, this.props.password, this.props.phone, this.props.company, this.props.name)} style={style}/>
 
-        {/* {this.props.signedUp ? <Text style={{color: 'green'}}>Congrats, your account was successfully created!</Text> : null} */}
         {this.props.error ? <Text style={{color: 'red', fontSize: 12, alignSelf: 'center', width: '80%'}}>{this.props.error.message}</Text> : null}
-        {this.props.passwordNotConfirmed ? <Text style={{color: 'red', fontSize: 12, alignSelf: 'center'}}>Password and Password Confirmation don't match! Please try again</Text> : null}
+        {this.props.passwordNotConfirmed ? <Text style={{color: 'red', fontSize: 12, alignSelf: 'center'}}>{"Password and Password Confirmation don't match! Please try again"}</Text> : null}
         <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Bottom.png'}} style={{height: 400, width: 150, position: 'absolute', left: 0, bottom: -205, resizeMode: 'contain'}}/>
       </Card>
     )
@@ -57,7 +56,7 @@ const style = {
     height: '9%',
     paddingTop: '4%',
     zIndex: 10,
-    marginTop: 12
+    marginTop: 12,
   },
   text:{
     fontSize:20,
