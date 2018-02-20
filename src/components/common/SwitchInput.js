@@ -13,12 +13,14 @@ const SwitchInput = (props) => {
     )
 };
 
+
+
 const style = {
   flexDirection: 'row',
   justifyContent: 'space-between',
   // alignItems: 'center',
   marginVertical:15,
   marginLeft: '11%',
-  width: '105%'
+  width: (Platform.OS === 'android' ? '80%' : '105%')
 }
 export {SwitchInput};

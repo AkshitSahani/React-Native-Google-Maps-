@@ -166,21 +166,26 @@ class FiltersScreen extends Component {
           alignSelf: 'center'
         }
       };
-    let rateAndDateViewStyle = {
+    const rateAndDateViewStyle = {
+
+
       justifyContent: 'space-around',
       flexDirection: 'row',
       marginBottom:15,
+      width: '81.5%',
+      marginLeft: '9.5%'
+
     };
 
-    if(Platform.OS === 'ios'){
-      rateAndDateViewStyle = {
-        justifyContent: 'space-around',
-        flexDirection: 'row',
-        marginBottom:15,
-        width: '81.5%',
-        marginLeft: '9.5%'
-      };
-    };
+    // if(Platform.OS === 'ios'){
+    //   rateAndDateViewStyle = {
+    //     justifyContent: 'space-around',
+    //     flexDirection: 'row',
+    //     marginBottom:15,
+    //     width: '81.5%',
+    //     marginLeft: '9.5%'
+    //   };
+    // };
 
 
     const searchButtonStyle = {
