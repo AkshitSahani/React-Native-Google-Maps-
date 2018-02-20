@@ -55,7 +55,7 @@ const style = {
     // justifyContent: 'center',
     alignItems: 'center',
     // flexDirection: 'row',
-    height:'70%',
+    height: (Platform.OS === 'android' ? '72%' : '70%'),
     position: 'absolute',
     bottom: 0,
     left: 0,

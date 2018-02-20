@@ -66,7 +66,7 @@ const style = {
   overall: {
     alignSelf: 'center',
     alignItems: 'center',
-    height:'70%',
+    height:(Platform.OS === 'android' ? '72%' : '70%'),
     position: 'absolute',
     bottom: 0,
     left: 0,
