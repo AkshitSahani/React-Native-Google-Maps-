@@ -3,12 +3,12 @@ import React from 'react';
 const initialState = {
   experience: 0,
   rateMin:0,
-  rateMax:0,
-  rating:0,
+  rateMax:100000000000000,
+  rating:1,
   radius:40075/2,
   capability:'',
-  insurance:true,
-  unionized:true,
+  insurance:false,
+  unionized:false,
   coordinates:{},
   availabilityMin:'',
   availabilityMax:''

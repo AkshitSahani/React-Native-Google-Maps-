@@ -7,7 +7,7 @@ import {Button} from './';
 
 const Rate = props => {
 
-  let ratesMin = [{diaplay:'Any', value:1}];
+  let ratesMin = [{diaplay:'Any', value:0}];
   let ratesMax = [{diaplay:'Any', value:100000000000000}];
 
   for (let i=10; i<= 300; i += 10) {
@@ -20,7 +20,7 @@ const Rate = props => {
     <View style={style.overall}>
       <View style={{height: '15%'}}>
         <Text style={style.text}>Hourly Rate</Text>
-        <Text style={style.text}>{(props.rateMin === 1 ? 'Any' : '$' + props.rateMin) + ' - ' + (props.rateMax === 100000000000000 ? 'Any' : '$' + props.rateMax)}</Text>
+        <Text style={style.text}>{(props.rateMin === 0 ? 'Any' : '$' + props.rateMin) + ' - ' + (props.rateMax === 100000000000000 ? 'Any' : '$' + props.rateMax)}</Text>
       </View>
 
       <View style={{...style.row,height: '12%'}}>
