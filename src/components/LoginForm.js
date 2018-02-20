@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, Image, TouchableOpacity} from 'react-native';
+import {Text, Image, TouchableOpacity, Platform} from 'react-native';
 import {connect} from 'react-redux';
 import {Card, CardItem, Input, Button, Spinner} from './common';
 import {login} from './actionCreators';
@@ -11,11 +11,11 @@ class LoginForm extends Component {
   // componentWillMount(){
   //   return this.props.loadingLoginPage();
   // };
-
+// Platform.OS == 'android' ? 40 : 40
   render() {
     return(
       <Card style={{backgroundColor: 'white', height: '100%'}}>
-        <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: -72}}/>
+        <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: (Platform.OS == 'android' ? -75 : -72)}}/>
         <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 18, marginBottom: -20}}/>
         <CardItem>
           <Input placeholder="Email" changed={(text)=>{this.props.emailChanged(text)}} value={this.props.email}/>
