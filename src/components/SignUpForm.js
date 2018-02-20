@@ -7,7 +7,7 @@ import {signUp} from './actionCreators';
 class SignUpForm extends Component {
   render(){
     return (
-      <Card style={this.props.style}>
+      <Card style={{...this.props.style, height: '100%'}}>
         <Image source={{uri: 'https://torinit.com/assets/workorbe/Blue-Hexagon-Top.png'}} style={{height: 135, width: 250, position: 'absolute', resizeMode: 'contain', top: 0, right: (Platform.OS == 'android' ? -75 : -72)}}/>
         <Image source={{uri: 'https://torinit.com/assets/workorbe/New-Logo.png'}} style={{height: 150, width: 300, alignSelf: 'center', resizeMode: 'contain', marginTop: 18, marginBottom: -20}}/>
         <CardItem>
