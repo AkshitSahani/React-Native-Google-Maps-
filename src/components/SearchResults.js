@@ -26,7 +26,7 @@ class SearchResults extends Component {
     let top = (Platform.OS === 'android' ? 55 : 64);
 
     if(this.props.users.length <= 1){
-      top = 79;
+      top = 76;
     }
 
     let height = (100 - top);
@@ -39,27 +39,68 @@ class SearchResults extends Component {
                   <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin} - ${this.props.filters.rateMax}</Text>
                   <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} to {this.props.filters.availabilityMax}</Text>
                 </View>
+                if (Platform.OS === 'android') {
+
+                  if(this.props.users.length <= 1){
+                    top = 76;
+                  } else  {
+                    top = 61
+                  }
+                }
     }
     else if ((this.props.filters.rateMin === 0 || this.props.filters.rateMax === 100000000000000) && (this.props.filters.availabilityMin !== "" || this.props.filters.availabilityMax !== "")) {
       blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
                   {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
                   <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin === "" ? 'Any' : this.props.filters.availabilityMin} to {this.props.filters.availabilityMax === "" ? 'Any' : this.props.filters.availabilityMax}</Text>
                 </View>
+                if (Platform.OS === 'android') {
+
+                  if(this.props.users.length <= 1){
+                    top = 79;
+                  } else  {
+                    top = 61
+                  }
+                }
     }
     else if ((this.props.filters.rateMin !== 0 || this.props.filters.rateMax !== 100000000000000) && (this.props.filters.availabilityMin === "" || this.props.filters.availabilityMax === "")) {
       blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
                   {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
                   <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin === 0 ? 'Any' : this.props.filters.rateMin} - ${this.props.filters.rateMax === 100000000000000 ? "Any" : this.props.filters.rateMax}</Text>
                 </View>
+
+                if (Platform.OS === 'android') {
+
+                  if(this.props.users.length <= 1){
+                    top = 76;
+                  } else  {
+                    top = 61
+                  }
+                }
     }
     else if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === "" && this.props.filters.capability !== ""){
       blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
                   {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
                 </View>
+                if (Platform.OS === 'android') {
+
+                  if(this.props.users.length <= 1){
+                    top = 76;
+                  } else  {
+                    top = 61
+                  }
+                }
     }
 
     else {
       blueBar = null
+      if (Platform.OS === 'android') {
+
+        if(this.props.users.length <= 1){
+          top = 76;
+        } else  {
+          top = 61
+        }
+      }
     }
     // if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === ""){
 
