@@ -27,13 +27,31 @@ class SearchResults extends Component {
 
     let height = (100 - top);
 
-    return(
+    let blueBar;
 
+    if(this.props.filters.rateMin !== 0 && this.props.filters.rateMax !== 100000000000000 && this.props.filters.availabilityMin !== "" && this.props.filters.availabilityMax !== ""){
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+                  <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin} - ${this.props.filters.rateMax}</Text>
+                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
+                </View>
+    }
+    else if ((this.props.filters.rateMin === 0 || this.props.filters.rateMax === 100000000000000) && (this.props.filters.availabilityMin !== "" || this.props.filters.availabilityMax !== "")) {
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
+                </View>
+    }
+    else if ((this.props.filters.rateMin !== 0 || this.props.filters.rateMax !== 100000000000000) && (this.props.filters.availabilityMin === "" || this.props.filters.availabilityMax === "")) {
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+                  <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin === 0 ? 'Any' : this.props.filters.rateMin} - ${this.props.filters.rateMax === 100000000000000 ? "Any" : this.props.filters.rateMax}</Text>
+                </View>
+    }
+    else if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === ""){
+      blueBar = null
+    }
+
+    return(
       <Card>
-       {this.state.expanded ? null : <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
-         <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin} - ${this.props.filters.rateMax}</Text>
-         <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
-      </View>}
+       {this.state.expanded ? null : blueBar}
        <Map height="100%" width="100%"/>
        <View style={
          this.state.expanded ? {position: 'absolute', backgroundColor: 'rgba(255,255,255, 1)', top: 0, left: 0, right: 0, zIndex: 10, height:'100%'} : {position: 'absolute', backgroundColor: 'rgba(255,255,255,0.8)', top:''+top+'%', left: 0, right: 0, zIndex: 10, height: ''+height+'%'}
