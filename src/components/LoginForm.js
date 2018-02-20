@@ -7,10 +7,6 @@ import {Actions} from 'react-native-router-flux';
 
 class LoginForm extends Component {
 
-  //need to figure out this error. Error message from signup page shows up on login page if you click back
-  // componentWillMount(){
-  //   return this.props.loadingLoginPage();
-  // };
 // Platform.OS == 'android' ? 40 : 40
   render() {
     return(
@@ -79,7 +75,6 @@ const mapDispatchToProps = (dispatch) => {
     passwordChanged: (text) => dispatch({type: 'passwordChanged', value: text}),
     loginUser: (email, password) => dispatch(login(email, password)),
     moveToSignUp: () => {dispatch({type: 'movingToSignUp'}); return Actions.SignUpForm();},
-    loadingLoginPage: () => dispatch({type: 'loadingLoginPage'}),
   };
 };
 

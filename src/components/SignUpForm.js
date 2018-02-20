@@ -5,6 +5,11 @@ import {connect} from 'react-redux';
 import {signUp} from './actionCreators';
 
 class SignUpForm extends Component {
+
+  componentWillUnmount(){
+    this.props.loadingLoginPage();
+  }
+
   render(){
     return (
       <Card style={{...this.props.style, height: '100%', backgroundColor: 'white'}}>
@@ -90,7 +95,8 @@ const mapDispatchToProps = (dispatch) => {
     nameChanged: (text) => dispatch({type: 'nameChanged', value: text}),
     companyChanged: (text) => dispatch({type: 'companyChanged', value: text}),
     phoneChanged: (text) => dispatch({type: 'phoneChanged', value: text}),
-    confirmationChanged: (text) => dispatch({type: 'confirmationChanged', value: text})
+    confirmationChanged: (text) => dispatch({type: 'confirmationChanged', value: text}),
+    loadingLoginPage: () => dispatch({type: 'loadingLoginPage'}),
   }
 };
 

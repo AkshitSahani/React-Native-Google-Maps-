@@ -44,7 +44,7 @@ const AuthReducer = (state = initialState, action) => {
     case 'passwordNotConfirmed':
       return {...state, passwordNotConfirmed: true, loading: false, password: '', passwordConfirmation: ''}
     case 'movingToSignUp':
-      return {...state, error: ''}
+      return {...initialState}
     case 'loadingLoginPage':
       return {...state, error: ''}
     default:
