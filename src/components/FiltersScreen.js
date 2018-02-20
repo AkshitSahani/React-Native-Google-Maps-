@@ -214,7 +214,8 @@ class FiltersScreen extends Component {
         top: 0,
         height: '100%',
         left: 0,
-        right: 0
+        right: 0,
+        backgroundColor: 'white'
       }}>
 
         <Input
