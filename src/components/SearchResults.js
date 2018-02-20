@@ -23,10 +23,10 @@ class SearchResults extends Component {
 
   render(){
 
-    let top = (Platform.OS === 'android' ? 55 : 63);
+    let top = (Platform.OS === 'android' ? 55 : 64);
 
     if(this.props.users.length <= 1){
-      top = 71;
+      top = 79;
     }
 
     let height = (100 - top);
