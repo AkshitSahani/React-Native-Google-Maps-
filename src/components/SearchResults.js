@@ -17,6 +17,10 @@ class SearchResults extends Component {
     return this.setState({expanded: !this.state.expanded});
   };
 
+  capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   render(){
 
     let top = (Platform.OS === 'android' ? 55 : 63);
@@ -30,24 +34,34 @@ class SearchResults extends Component {
     let blueBar;
 
     if(this.props.filters.rateMin !== 0 && this.props.filters.rateMax !== 100000000000000 && this.props.filters.availabilityMin !== "" && this.props.filters.availabilityMax !== ""){
-      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
+                  {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
                   <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin} - ${this.props.filters.rateMax}</Text>
-                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
+                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} to {this.props.filters.availabilityMax}</Text>
                 </View>
     }
     else if ((this.props.filters.rateMin === 0 || this.props.filters.rateMax === 100000000000000) && (this.props.filters.availabilityMin !== "" || this.props.filters.availabilityMax !== "")) {
-      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
-                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin} - {this.props.filters.availabilityMax}</Text>
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
+                  {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
+                  <Text style={{color: 'white', alignSelf: 'center'}}>{this.props.filters.availabilityMin === "" ? 'Any' : this.props.filters.availabilityMin} to {this.props.filters.availabilityMax === "" ? 'Any' : this.props.filters.availabilityMax}</Text>
                 </View>
     }
     else if ((this.props.filters.rateMin !== 0 || this.props.filters.rateMax !== 100000000000000) && (this.props.filters.availabilityMin === "" || this.props.filters.availabilityMax === "")) {
-      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%'}}>
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
+                  {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
                   <Text style={{color: 'white', alignSelf: 'center'}}>${this.props.filters.rateMin === 0 ? 'Any' : this.props.filters.rateMin} - ${this.props.filters.rateMax === 100000000000000 ? "Any" : this.props.filters.rateMax}</Text>
                 </View>
     }
-    else if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === ""){
+    else if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === "" && this.props.filters.capability !== ""){
+      blueBar = <View style={{backgroundColor: '#426E86', position: 'absolute', top: 0, left: 0, zIndex: 100, width: '100%', height: 45}}>
+                  {this.props.filters.capability === "" ? null : <Text style={{color: 'white', alignSelf: 'center'}}>{this.capitalize(this.props.filters.capability)}</Text>}
+                </View>
+    }
+
+    else {
       blueBar = null
     }
+    // if(this.props.filters.rateMin === 0 && this.props.filters.rateMax === 100000000000000 && this.props.filters.availabilityMin === "" && this.props.filters.availabilityMax === ""){
 
     return(
       <Card>

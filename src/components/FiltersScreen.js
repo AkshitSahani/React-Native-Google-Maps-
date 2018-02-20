@@ -223,6 +223,7 @@ class FiltersScreen extends Component {
           value={capability}
           placeholder="Capability"
           style={{backgroundColor: 'white'}}
+          autoFocus={true}
         />
 
         <View

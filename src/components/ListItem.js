@@ -6,6 +6,10 @@ import {Card, CardItem, Button, Header} from './common';
 
 class ListItem extends Component {
 
+  capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
   render() {
     const { capability,rate,rating, name, experience, radius, image } = this.props.user;
     const roundedRadius = radius ? radius.toFixed(2) : '';
@@ -18,7 +22,7 @@ class ListItem extends Component {
 
         <CardItem style={style.cardItem}>
           <Text style={style.content}> {name}</Text>
-          <Text style={style.content}>{capability}</Text>
+          <Text style={style.content}>{this.capitalize(capability)}</Text>
           <View style={{flexDirection: 'row',alignItems: 'center'}}><Image source={{uri: 'https://torinit.com/assets/workorbe/Star.png'}} style={{height: 15, width: 15}}/><Text style={style.content}> {rating}</Text></View>
           <Button style={style} content="Book" pressed={() => {Actions.LoginForm()}}/>
         </CardItem>
