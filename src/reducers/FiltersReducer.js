@@ -4,7 +4,7 @@ const initialState = {
   experience: 0,
   rateMin:0,
   rateMax:100000000000000,
-  rating:1,
+  rating:0,
   radius:40075/2,
   capability:'',
   insurance:false,

@@ -18,14 +18,22 @@ const Rating = props => {
       <View style={style.general}>
         <Button
           content="Any"
-          pressed={props.pressed.bind(null,1)}
+          pressed={props.pressed.bind(null,0)}
           style={firstButtonStyle}
-          id={1}
+          id={0}
           clicked={props.rating}
         />
 
         <Button
           content="2+"
+          pressed={props.pressed.bind(null,2)}
+          style={style}
+          id={2}
+          clicked={props.rating}
+        />
+
+        <Button
+          content="3+"
           pressed={props.pressed.bind(null,3)}
           style={style}
           id={3}
@@ -33,18 +41,10 @@ const Rating = props => {
         />
 
         <Button
-          content="3+"
+          content="4+"
           pressed={props.pressed.bind(null,4)}
           style={style}
           id={4}
-          clicked={props.rating}
-        />
-
-        <Button
-          content="4+"
-          pressed={props.pressed.bind(null,5)}
-          style={style}
-          id={5}
           clicked={props.rating}
         />
       </View>
