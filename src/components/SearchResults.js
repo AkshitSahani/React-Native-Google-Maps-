@@ -26,7 +26,7 @@ class SearchResults extends Component {
     let top = (Platform.OS === 'android' ? 55 : 64);
 
     if(this.props.users.length <= 1){
-      top = 76;
+      top = 79;
     }
 
     let height = (100 - top);
