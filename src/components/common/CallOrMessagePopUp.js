@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Linking} from 'react-native';
 
 const CallOrMessagePopUp = (props) => {
   return(
@@ -7,12 +7,16 @@ const CallOrMessagePopUp = (props) => {
       <Text style={{fontSize: 18, marginBottom: 20, marginRight: 15}}> Contact James</Text>
       <View style={styles.insideView}>
         <View style={styles.bottomView}>
-          <Image source={{uri: 'https://torinit.com/assets/workorbe/phone-receiver.png'}} style={{height: 50, width: 50}}/>
+          <TouchableOpacity onPress={()=>{Linking.openURL('tel:+16478282907')}}>
+            <Image source={{uri: 'https://torinit.com/assets/workorbe/phone-receiver.png'}} style={{height: 50, width: 50}}/>
+          </TouchableOpacity>
           <Text style={{fontSize: 18}}>Call</Text>
         </View>
 
         <View style={styles.bottomView}>
-          <Image source={{uri: 'https://torinit.com/assets/workorbe/Message.png'}} style={{height: 60, width: 60, resizeMode: 'contain'}}/>
+          <TouchableOpacity onPress={()=>{Linking.openURL('sms:+16478282907')}}>
+            <Image source={{uri: 'https://torinit.com/assets/workorbe/Message.png'}} style={{height: 60, width: 60, resizeMode: 'contain'}}/>
+          </TouchableOpacity>
           <Text style={{fontSize: 18}}>Message</Text>
         </View>
       </View>

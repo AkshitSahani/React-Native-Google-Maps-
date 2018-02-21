@@ -10,7 +10,8 @@ import ListItem from './ListItem';
 class SearchResults extends Component {
 
   state = {
-    expanded: false
+    expanded: false,
+    selectedUser: null
   };
 
   expandResults = () => {
