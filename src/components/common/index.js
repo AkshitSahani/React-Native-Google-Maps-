@@ -12,3 +12,4 @@ export * from './Rate';
 export * from './Rating';
 export * from './DatePage';
 export * from './ExpOpts';
+export * from './CallOrMessagePopUp';

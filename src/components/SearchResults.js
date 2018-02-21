@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 import {View, FlatList,TextInput, Text, Platform, TouchableOpacity, Image} from 'react-native';
-import {Card, CardItem, Button} from './common';
+import {Card, CardItem, Button, CallOrMessagePopUp} from './common';
 import {search} from '../actionCreators/search';
 import Map from './Map';
 import ListItem from './ListItem';
@@ -129,6 +129,7 @@ class SearchResults extends Component {
            }
          />
        </View>
+       {this.props.auth.loggedIn || this.props.auth.signedUp ? <CallOrMessagePopUp /> : null}
      </Card>
    );
 
@@ -139,7 +140,8 @@ const mapStateToProps = state => {
   // const {location, unionized, insurance, endDate, startDate, rating, rateMax, rateMin, capability, radius} = state.filters;
   return ({
     filters:state.filters,
-    users:state.search.users
+    users:state.search.users,
+    auth: state.auth
   });
 };
 
