@@ -15,6 +15,7 @@
     "@firebase/firestore": "^0.3.2",
     "firebase": "^4.9.1",
     "react": "16.2.0",
+    "react-devtools": "^3.1.0",
     "react-native": "0.52.2",
     "react-native-datepicker": "^1.6.0",
     "react-native-maps": ">=0.12.4",

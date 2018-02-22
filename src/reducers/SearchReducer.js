@@ -1,7 +1,8 @@
 import React from 'react';
 
 const initialState = {
-  users: []
+  users: [],
+  selectedUser: null
 };
 
 const SearchReducer = (state = initialState, action) => {
@@ -9,6 +10,9 @@ const SearchReducer = (state = initialState, action) => {
     case 'searchResult':
       console.log('action.payload: ', action.payload);
       return {...state, users: action.payload};
+    case 'selectUser':
+    console.log(action.user);
+      return{...state, selectedUser: action.user};
     default:
       return state
   }

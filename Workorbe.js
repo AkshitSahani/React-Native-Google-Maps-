@@ -1,3 +1,4 @@
+// require('react-devtools-core').connectToDevTools({host: 'ip-of-machine-with-devtools-running'});
 import React, { Component } from 'react';
 import {Text, View} from 'react-native';
 import {createStore, combineReducers, applyMiddleware} from 'redux';

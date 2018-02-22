@@ -11,7 +11,15 @@ class SearchResults extends Component {
 
   state = {
     expanded: false,
-    selectedUser: null
+  };
+
+  method = (item) => {
+    this.props.selectUser(item);
+    Actions.LoginForm();
+  };
+
+  componentWillMount(){
+    console.log(this.state);
   };
 
   expandResults = () => {
@@ -124,13 +132,15 @@ class SearchResults extends Component {
                return (
                  <ListItem
                    user={item}
+                   // clicked={(item)=>{this.props.selectUser(item)}}
+                   clicked={this.method.bind(this, item)}
                  />
                );
              }
            }
          />
        </View>
-       {this.props.auth.loggedIn || this.props.auth.signedUp ? <CallOrMessagePopUp /> : null}
+       {this.props.auth.loggedIn || this.props.auth.signedUp ? <CallOrMessagePopUp name={this.props.selectedUser.name} phoneNumber={this.props.selectedUser.phone}/> : null}
      </Card>
    );
 
@@ -142,8 +152,19 @@ const mapStateToProps = state => {
   return ({
     filters:state.filters,
     users:state.search.users,
-    auth: state.auth
+    auth: state.auth,
+    selectedUser: state.search.selectedUser
   });
 };
 
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = (dispatch) => {
+  return{
+    selectUser: (item)=> {
+                            console.log(item);
+                            console.log('dispatching action');
+                            return dispatch({type: 'selectUser', user: item});
+                          }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
