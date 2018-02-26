@@ -18,10 +18,6 @@ class SearchResults extends Component {
     Actions.LoginForm();
   };
 
-  componentWillMount(){
-    console.log(this.state);
-  };
-
   expandResults = () => {
     return this.setState({expanded: !this.state.expanded});
   };
@@ -132,8 +128,9 @@ class SearchResults extends Component {
                return (
                  <ListItem
                    user={item}
-                   // clicked={(item)=>{this.props.selectUser(item)}}
-                   clicked={this.method.bind(this, item)}
+                   // clicked={this.method.bind(this,item)}
+                   // clicked={()=>{this.props.selectUser(item); Actions.LoginForm();}}
+                   clicked = {()=>{this.method(item)}} //all 3 solutions work. For some reason, if you provide item as an argument in the arrow function, it doesnt work.
                  />
                );
              }
@@ -160,8 +157,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return{
     selectUser: (item)=> {
-                            console.log(item);
-                            console.log('dispatching action');
                             return dispatch({type: 'selectUser', user: item});
                           }
   }

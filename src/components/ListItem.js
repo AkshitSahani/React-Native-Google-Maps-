@@ -31,7 +31,7 @@ class ListItem extends Component {
           <View style={{flexDirection: 'row', alignItems: 'center'}}><Image source={{uri: 'https://torinit.com/assets/workorbe/Dollar.png'}} style={{height: 14, width: 7}}/><Text style={style.content}> {rate}</Text></View>
           <Text style={style.content}>{roundedRadius} Km away</Text>
           <Text style={style.content}>Exp {experience} years</Text>
-          <Button style={style} content="Contact" pressed={()=>{this.method()}}/>
+          <Button style={style} content="Contact" pressed={this.props.clicked}/>
         </CardItem>
 
       </Card>
