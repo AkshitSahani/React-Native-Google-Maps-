@@ -13,3 +13,4 @@ export * from './Rating';
 export * from './DatePage';
 export * from './ExpOpts';
 export * from './CallOrMessagePopUp';
+export * from './Navbar';
