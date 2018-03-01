@@ -15,7 +15,7 @@ const RouterComponent = () => {
           <Scene key="HomePage" component={HomePage} initial hideNavBar/>
         </Scene>
         <Scene key="main">
-          <Scene key="SearchScreen" component={SearchScreen} leftTitle="Nav" onLeft={()=>{console.log('sending props'); Actions.refresh({navBarExpanded: Math.random(1000000)});}} leftButtonTextStyle={{color: '#F9BA32'}}></Scene>
+          <Scene key="SearchScreen" component={SearchScreen} leftTitle="Nav" onLeft={()=>{Actions.refresh({navBarExpanded: Math.random(1000000)});}} leftButtonTextStyle={{color: '#F9BA32'}}></Scene>
           <Scene key="FiltersScreen" component={FiltersScreen} tintColor='#F9BA32'/>
         </Scene>
         <Scene key="results">

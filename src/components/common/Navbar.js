@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
+import {Button} from './';
 
 class Navbar extends Component {
 
@@ -29,41 +30,14 @@ class Navbar extends Component {
           backgroundColor: 'white',
           width: '50%',
           height: '100%',
-          zIndex: 123552365234
+          zIndex: 123552365234,
         },
         navTop: {
           flexDirection: 'row',
           justifyContent: 'flex-start',
           alignItems: 'center',
-          marginBottom: '10%'
-        },
-        details: {
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          marginLeft: '10%'
-        }
-      }
-    }
-    else{
-      styles={
-        outerContainer: {
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          position: 'absolute',
-          top: 0,
-          left: '-100%',
-          backgroundColor: 'white',
-          width: '0%',
-          height: '100%',
-          zIndex: 123552365234
-        },
-        navTop: {
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          marginBottom: '10%'
+          marginBottom: '15%',
+          marginTop: '5%'
         },
         details: {
           flexDirection: 'column',
@@ -74,9 +48,19 @@ class Navbar extends Component {
       }
     };
 
+    let style = {
+      button: {
+        // marginTop: '5%'
+      },
+      text: {
+        color: '#426E86',
+        fontSize: 17
+      }
+    };
+
     return(
       <View style={styles.outerContainer}>
-        <View style={{height: '40%', justifyContent: 'space-around', marginLeft: '5%'}}>
+        <View style={{height: '43%', justifyContent: 'space-around', marginLeft: '5%'}}>
 
           <View style={styles.navTop}>
             <Image source={{uri: 'https://torinit.com/assets/workorbe/user-1.jpeg'}} style={{width: 50, height: 50}}/>
@@ -86,18 +70,19 @@ class Navbar extends Component {
             </View>
           </View>
 
-          <Text>My Bookings</Text>
+          <Button content="My Bookings" style={style}/>
 
-          <Text>My Messages</Text>
+          <Button content="My Messages" style={style}/>
 
-          <Text>My Connections</Text>
+          <Button content="My Connections" style={style}/>
 
-          <Text>My Settings</Text>
+          <Button content="My Settings" style={style}/>
 
-          <Text>Help</Text>
+          <Button content="Help" style={style}/>
+
         </View>
 
-        <Text style={{marginTop: '150%', marginLeft: '5%'}}>Contact Us</Text>
+        <Button content="Contact Us" style={{button:{marginTop: '150%', marginLeft: '5%'}, text: {color: '#F9BA32', fontSize: 18}}}/>
       </View>
     )
   };
