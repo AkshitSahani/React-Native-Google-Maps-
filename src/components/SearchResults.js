@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
 import {View, FlatList,TextInput, Text, Platform, TouchableOpacity, Image} from 'react-native';
-import {Card, CardItem, Button, CallOrMessagePopUp} from './common';
+import {Card, CardItem, Button, CallOrMessagePopUp, Navbar} from './common';
 import {search} from '../actionCreators/search';
 import Map from './Map';
 import ListItem from './ListItem';
@@ -11,6 +11,19 @@ class SearchResults extends Component {
 
   state = {
     expanded: false,
+    navBarExpanded: false
+  };
+
+  toggleModal = () => {
+   this.setState({
+     navBarExpanded: !this.state.navBarExpanded
+   })
+ };
+
+  componentWillReceiveProps = (props) => {
+    if(props.navBarExpanded){
+      this.toggleModal();
+    };
   };
 
   method = (item) => {
@@ -138,6 +151,7 @@ class SearchResults extends Component {
          />
        </View>
        {this.props.auth.loggedIn || this.props.auth.signedUp ? <CallOrMessagePopUp name={this.props.selectedUser.name} phoneNumber={this.props.selectedUser.phone}/> : null}
+       {this.state.navBarExpanded ? <Navbar navBarExpanded/> : null}
      </Card>
    );
 
